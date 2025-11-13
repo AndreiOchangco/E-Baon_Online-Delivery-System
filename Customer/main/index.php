@@ -14,14 +14,19 @@ $username = $_SESSION['user']; // store for display
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage | E-Baon</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
+  <header>
+    <div class="logo">E-Baon Delivery</div>
+    <div class="welcome">Hello, <?php echo htmlspecialchars($username); ?>!</div>
+    <a href="logout.php" class="logout-btn">Logout</a>
+  </header>
+
   <div class="container">
     <div class="form-box">
-      <h1>Welcome, <?php echo htmlspecialchars($_SESSION['user']); ?>!</h1>
+      <h1>Welcome, <?php echo htmlspecialchars($username); ?>!</h1>
       <p>You are logged into the Online Delivery System.</p>
-      <a href="logout.php" class="btn" style="display:inline-block;margin-top:15px;">Logout</a>
     </div>
   </div>
 </body>
