@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../Admin/config.php'; // path to your DB config
+require '../Admin/config.php'; // updated path
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name']);
@@ -12,8 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssss", $name, $username, $email, $password);
     $stmt->execute();
 
-    // Redirect to login page after registration
-    header('Location: login.html');
+    header('Location: login.html'); // redirect to login page
     exit();
 }
 ?>

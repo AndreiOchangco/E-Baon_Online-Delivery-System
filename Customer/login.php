@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../Admin/config.php'; // path to DB config
+require '../Admin/config.php'; // updated path
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['userName']);
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminAccounts = ['admin' => 'admin'];
     if (isset($adminAccounts[$username]) && $password === $adminAccounts[$username]) {
         $_SESSION['user'] = $username;
-        header('Location: ../../Admin/main/index.php');
+        header('Location: ../Admin/main/index.php');
         exit();
     }
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result && $result->num_rows > 0) {
         $_SESSION['user'] = $username;
-        header('Location: index.php'); // normal user dashboard
+        header('Location: main/index.php'); // normal user dashboard
         exit();
     } else {
         header('Location: login.html'); // redirect on failure
