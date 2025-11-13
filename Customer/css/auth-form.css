@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  background-color: #7ebdff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -59,7 +59,7 @@ body {
 /* Button */
 .btn {
   width: 100%;
-  background-color: #ff9800;
+  background-color: #50a5ff;
   color: white;
   padding: 10px;
   border: none;
@@ -70,7 +70,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #e68900;
+  background-color: #3898ff;
 }
 
 /* Text links */
@@ -81,7 +81,7 @@ body {
 }
 
 .text a {
-  color: #ff9800;
+  color: #50a5ff;
   text-decoration: none;
 }
 
