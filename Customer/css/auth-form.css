@@ -21,6 +21,12 @@ body {
   padding: 20px;
 }
 
+/* Logo */
+.logo-container {
+  max-width: 200px;
+  max-height: 200px;
+}
+
 /* Form box */
 .form-box {
   background: #fff;

@@ -7,7 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
 
     // Admin login
-    $adminAccounts = ['admin' => 'admin'];
+    $adminAccounts = [
+        'admin' => 'admin'
+    ];
+    
     if (isset($adminAccounts[$username]) && $password === $adminAccounts[$username]) {
         $_SESSION['user'] = $username;
         header('Location: ../Admin/main/index.php');
