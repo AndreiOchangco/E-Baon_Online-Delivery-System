@@ -1,19 +1,43 @@
 <?php
-session_start();
-$error = $_SESSION['login_error'] ?? "";
-unset($_SESSION['login_error']);
+
+session_start(); // Start the session to handle form states and messages
+
+
+// this array stores error messages for login and registration forms, as well as which form should be active (visible) when the page loads.
+$errors = [
+    'login' => $_SESSION['login_error'] ?? '',
+    'register' => $_SESSION['register_error'] ?? ''
+];
+
+//this variable used to determine which form (login or register) should be displayed as active when the page loads.
+$activeForm = $_SESSION['active_form'] ?? 'login';
+
+session_unset(); // Clear session variables to avoid showing old messages/forms on page reload
+
+
+// it returns an HTML paragraph element containing the error message if there is an error; otherwise, it returns an empty string.
+function showError($error) {
+    return !empty($error) ? "<p class='error-message'>$error</p>" : '';
+}
+
+
+// it accepts two parameters: the name of a form and the currently active form. It returns the string 'active' if the form name matches the active form, otherwise it returns an empty string.
+function isActiveForm($formName, $activeForm) {
+    return $formName === $activeForm ? 'active' : '';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>E-Baon Login</title>
+  <title>Login | E-Baon</title>
   <link rel="stylesheet" href="../Css/style.css">
 </head>
 <body>
 
-<div class="card">
   <div class="logo">logo</div>
+  <div class="card">
 
   <form action="Login.php" method="POST">
     <div class="field">
