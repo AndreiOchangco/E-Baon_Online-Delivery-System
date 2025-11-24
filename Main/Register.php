@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $insert_stmt->execute();
 
         $_SESSION["register_success"] = "Your account has been registered!";
-        header("Location: Register.php");
+        header("Location: Index.php");
         exit();
     } catch (PDOException $e) {
         $_SESSION["register_error"] = "Database error.";
@@ -64,7 +64,7 @@ unset($_SESSION["register_error"], $_SESSION["register_success"]);
 <body>
 
 <div class="auth-container">
-    <div class="logo">logo</div>
+    <img class="logo-img" src="../images/e-baon-logo.png" alt="">
 
     <div class="card">
         <form action="Register.php" method="POST">

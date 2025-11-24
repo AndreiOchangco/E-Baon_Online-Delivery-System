@@ -16,7 +16,7 @@ $username = $_SESSION["username"] ?? "Customer";
 <body>
 
 <div class="card">
-    <div class="logo">logo</div>
+    <img class="logo" src="../images/e-baon-logo.png" alt="">
     <h2>Customer Page</h2>
     <p>Welcome, <?php echo htmlspecialchars($username); ?></p>
     <a href="Logout.php" class="btn-login">LOGOUT</a>
