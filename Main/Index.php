@@ -16,7 +16,7 @@ unset($_SESSION["login_error"]);
 <body>
 
 <div class="auth-container">
-    <div class="logo">logo</div>
+    <img class="logo-img" src="../images/e-baon-logo.png" alt="">
 
     <div class="card">
         <form action="Login.php" method="POST">

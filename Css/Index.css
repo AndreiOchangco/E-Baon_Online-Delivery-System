@@ -30,10 +30,10 @@ body {
     box-shadow: 0px 18px 40px rgba(22, 101, 52, 0.35);
 }
 
-.logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 16px;
+.logo-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
     margin: -40px auto 20px auto;
     display: flex;
     justify-content: center;
@@ -93,7 +93,7 @@ body {
     font-weight: bold;
     color: #ffffff;
     font-size: 14px;
-    box-shadow: 0px 12px 26px rgba(22, 163, 74, 0.55);
+    box-shadow: 0px 12px 26px rgba(22, 163, 74, 0.5);
 }
 
 .btn-login:hover {
