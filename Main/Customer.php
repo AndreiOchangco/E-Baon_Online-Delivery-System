@@ -12,15 +12,36 @@ $username = $_SESSION["username"] ?? "Customer";
     <meta charset="UTF-8">
     <title>Customer Page</title>
     <link rel="stylesheet" href="../Css/Customer.css">
+    <link rel="stylesheet" href="../Css/main.css">
 </head>
-<body>
+<body class="mainpage-body">
+    <div class="mainpage-dashboard">
 
-<div class="card">
-    <img class="logo" src="../images/e-baon-logo.png" alt="">
-    <h2>Customer Page</h2>
-    <p>Welcome, <?php echo htmlspecialchars($username); ?></p>
-    <a href="Logout.php" class="btn-login">LOGOUT</a>
-</div>
+        <header class="mainpage-head">
+            <img class="mainpage-logo-box" src="../images/e-baon-logo.png" alt="">
+            <div class="mainpage-head-text">
+                <h1>E-Baon</h1>
+                <p>admin</p>
+            </div>
+        </header>
 
+        <div class="mainpage-separator"></div>
+
+        <div class="mainpage-pill-wrap">
+            <button class="mainpage-pill">📊 dashboard</button>
+        </div>
+
+        <section class="mainpage-card-grid">
+            <a href="#" class="mainpage-card">
+                <div class="mainpage-card-icon">📋</div>
+                <div class="mainpage-card-text">Draft</div>
+            </a>
+        </section>
+
+        <div class="mainpage-bottom-bar">
+            <a href="Logout.php" class="btn-login mainpage-logout">LOGOUT</a>
+        </div>
+
+    </div>
 </body>
 </html>

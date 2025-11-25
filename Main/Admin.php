@@ -22,7 +22,7 @@ $username = $_SESSION["username"] ?? "Admin";
     <header class="admin-head">
         <div class="admin-logo-box">L</div>
         <div class="admin-head-text">
-            <h1>Omacha Shop</h1>
+            <h1>E-Baon</h1>
             <p>admin</p>
         </div>
     </header>
