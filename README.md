@@ -1,7 +1,7 @@
 # E-Baon_Online-Delivery-System
 
 <p align="center">
-    <img src="./images/e-baon-logo.png" alt="E-Baon Logo" height="150px"/>
+    <img src="./images/e-baon-logo.png" alt="E-Baon Logo" height="200px"/>
 </p>
 
 <p align="justify">The E-Baon for CSF System is a web and mobile platform for parcel pick-up and drop-off in the City of San Fernando, La Union. It enables customers to schedule deliveries and allows drivers to manage requests, offering a fast, secure, and reliable local delivery service with real-time tracking and digital transactions.</p>
