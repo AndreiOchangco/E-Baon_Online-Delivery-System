@@ -37,20 +37,19 @@ body {
 }
 
 .admin-logo-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
+    width: 35px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 12px;
     font-size: 18px;
     color: #ecfdf5;
-    background: linear-gradient(145deg, #22c55e, #16a34a);
-    box-shadow: 0px 4px 10px rgba(22, 163, 74, 0.7);
 }
 
 .admin-head-text {
+    justify-content: center;
+    align-items: center;
     flex: 1;
     text-align: center;
 }
