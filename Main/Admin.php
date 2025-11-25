@@ -20,10 +20,7 @@ $username = $_SESSION["username"] ?? "Admin";
 <div class="admin-dashboard">
 
     <header class="admin-head">
-
-        <div class="admin-logo-box">
-            <span><img src="../images/e-baon-logo-outline.png" alt=""></span>
-        </div>
+        <img class="admin-logo-box" src="../images/e-baon-logo-outline.png" alt="">
         <div class="admin-head-text">
             <h1>E-Baon</h1>
             <p>admin</p>

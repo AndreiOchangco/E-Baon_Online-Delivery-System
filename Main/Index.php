@@ -20,18 +20,25 @@ unset($_SESSION["login_error"]);
 
     <div class="card">
         <form action="Login.php" method="POST">
-            <div class="field">
-                <span>🙎🏻‍♂️</span>
-                <input type="text" name="username" placeholder="username" required>
+            <div>
+                <label class="auth-label" for="name">Username</label>
+                <div class="field">
+                    <span>🙎🏻‍♂️</span>
+                    <input type="text" name="username" placeholder="username" required>
+                </div>
             </div>
 
-            <div class="field password-field">
-                <span>🔒</span>
-                <input type="password" id="login_password" name="password" placeholder="password" required>
-                <span class="password-icon" id="toggleEye">
-                    <i id="eyeIcon" class="fa-solid fa-eye-slash"></i>
-                </span>
+            <div>
+                <label class="auth-label" for="password">Password</label>
+                <div class="field password-field">
+                    <span>🔒</span>
+                    <input type="password" id="login_password" name="password" placeholder="password" required>
+                    <span class="password-icon" id="toggleEye">
+                        <i id="eyeIcon" class="fa-solid fa-eye-slash"></i>
+                    </span>
+                </div>
             </div>
+
 
             <button class="btn-login" type="submit">LOGIN</button>
         </form>
