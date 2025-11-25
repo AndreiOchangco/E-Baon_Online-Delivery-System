@@ -58,6 +58,7 @@ unset($_SESSION["register_error"], $_SESSION["register_success"]);
 <head>
     <meta charset="UTF-8">
     <title>E-Baon Register</title>
+     <link rel="shortcut icon" href="../images/e-baon-logo.png">
     <link rel="stylesheet" href="../Css/Register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
