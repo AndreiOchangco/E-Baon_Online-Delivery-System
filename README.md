@@ -49,7 +49,8 @@
 ### Prerequisites
 
 *   **XAMPP:** Installed and running (Apache, PHP, MySQL).
-*   **Git:** For cloning.
+*   **Git:** For cloning and commiting changes from local to remote.
+*   **GitHub:** For Remote Repository.
 
 ### Installation & Setup
 
@@ -82,10 +83,10 @@ You are free to Share and Adapt the material, under the terms of Attribution and
 ## 👤 Contributors
 
 *   **Team Developers**
-    *   **Andrei Luise Ochangco** - Team Leader, Repository Maintainer, Software Engineer, Project Manager, Sub-UI Designer, Sub-Programmer, Dependencies Checker, Database Administrator - [@AndreiOchangco](https://github.com/AndreiOchangco)
+    *   **Andrei Luise Ochangco** - Team Leader, Repository Maintainer, Software Engineer, Sub-UI Designer, Sub-Programmer, Dependencies Checker, Database Administrator - [@AndreiOchangco](https://github.com/AndreiOchangco)
     *   **Louis Ricardo Servito** - Main UI Designer - [@Lone-collab](https://github.com/Lone-collab)
-    *   **Ardy Aquino** - Main UI Designer - 
-    *   **Jonardson Ramat** - Database Manager
+    *   **Ardy Aquino** - Main UI Designer - [@]()
+    *   **Jonardson Ramat** - Database Manager, Back-end Programmer - [@]()
     *   **Mc Harley Disu** - Assistant
 
 </details>
