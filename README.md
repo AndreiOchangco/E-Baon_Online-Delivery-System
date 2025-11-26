@@ -26,7 +26,7 @@
 *   **Shopping Cart & Wishlist:** Add to cart, cart preview, quantity updates, coupon application, save favorites.
 *   **Secure Checkout Process:** Clear steps, shipping info, order summary, "Thank You" page, invoice generation (PDF option).
 *   **User Accounts:** Registration, login, (potentially) order history.
-*   **Engagement & Information:** Blog, About Us, Contact page, product reviews, comment system.
+*   **Engagement & Information:** About Us, Contact page, product reviews, comment system.
 
 ### For Administrators (Admin Dashboard):
 *   **Dashboard Overview:** Statistics on orders, users, sales, comments.
@@ -36,6 +36,10 @@
 *   **Comment Management:** Approve, reply to comments.
 *   **Content Management:** Manage blog posts, categories.
 *   **Statistical Reports:** Charts for best sellers, revenue.
+
+### For Delivery Riders (Delivery Tracking View)
+*   **Order List View:** View customer order requests.
+*   **Tracking Analysis:** Mapping for accurate location and tracking records.
 
 ## 🛠️ Technology Stack
 
