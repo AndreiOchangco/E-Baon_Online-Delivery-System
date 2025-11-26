@@ -39,7 +39,7 @@
 
 ## 🛠️ Technology Stack
 
-*   **Frontend:** HTML5, CSS3, JavaScript, Bootstrap, Tailwind CSS (for Admin)
+*   **Frontend:** HTML5, CSS3, JavaScript
 *   **Backend:** PHP (Procedural or with a custom structure)
 *   **Database:** MySQL (Managed via phpMyAdmin in XAMPP)
 *   **Web Server:** Apache (via XAMPP)
