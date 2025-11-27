@@ -19,69 +19,75 @@ $username = $_SESSION["username"] ?? "Admin";
 
 <body class="admin-body">
     <header class="admin-head">
-        <!-- Hamburger on the left -->
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-
-        <!-- Centered header text -->
+        <img class="admin-logo-box" src="../images/e-baon-logo-outline.png" alt="">
         <div class="admin-head-text">
             <h3>E-Baon</h3>
             <p>Admin</p>
         </div>
+
+        <!-- Sidebar Toggle -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
     </header>
 
     <div class="admin-container">
 
         <!-- LEFT SIDEBAR -->
         <aside class="admin-sidebar" id="sidebar">
-            <!-- Logo at top -->
-            <img class="admin-logo-box" src="../images/e-baon-logo-outline.png" alt="E-Baon Logo">
 
             <!-- MENU ITEMS -->
             <nav class="admin-menu">
-                <a href="../Body/Admin/Admin_Dashboard.php" class="admin-menu-item" data-tooltip="Dashboard">
+
+                <a href="../Body/Admin/Admin_Dashboard.php"
+                class="admin-menu-item"
+                data-tooltip="Dashboard">
                     <span class="admin-menu-item-icon">📊</span>
                     <span class="admin-menu-item-text">Dashboard</span>
                 </a>
 
-                <a href="../Body/Admin/Admin_ManageOrder.php" class="admin-menu-item" data-tooltip="Manage Orders">
+                <a href="../Body/Admin/Admin_ManageOrder.php"
+                class="admin-menu-item"
+                data-tooltip="Manage Orders">
                     <span class="admin-menu-item-icon">📋</span>
                     <span class="admin-menu-item-text">Manage Order</span>
                 </a>
 
-                <a href="../Body/Admin/Admin_ManageProduct.php" class="admin-menu-item" data-tooltip="Manage Products">
+                <a href="../Body/Admin/Admin_ManageProduct.php"
+                class="admin-menu-item"
+                data-tooltip="Manage Products">
                     <span class="admin-menu-item-icon">📦</span>
                     <span class="admin-menu-item-text">Manage Product</span>
                 </a>
 
-                <a href="../Body/Admin/Admin_ManageCustomer.php" class="admin-menu-item" data-tooltip="Customers">
+                <a href="../Body/Admin/Admin_ManageCustomer.php"
+                class="admin-menu-item"
+                data-tooltip="Customers">
                     <span class="admin-menu-item-icon">🙎🏻‍♂️</span>
                     <span class="admin-menu-item-text">Manage Customer</span>
                 </a>
 
-                <a href="../Body/Admin/Admin_ManageDelivery.php" class="admin-menu-item" data-tooltip="Delivery">
+                <a href="../Body/Admin/Admin_ManageDelivery.php"
+                class="admin-menu-item"
+                data-tooltip="Delivery">
                     <span class="admin-menu-item-icon">🛵</span>
                     <span class="admin-menu-item-text">Manage Delivery D.</span>
                 </a>
 
-                <a href="../Body/Admin/Admin_ManageAdminAcc.php" class="admin-menu-item" data-tooltip="Admin Accounts">
+                <a href="../Body/Admin/Admin_ManageAdminAcc.php"
+                class="admin-menu-item"
+                data-tooltip="Admin Accounts">
                     <span class="admin-menu-item-icon">⚙️</span>
                     <span class="admin-menu-item-text">Manage Admin Acc.</span>
                 </a>
+
             </nav>
 
-<<<<<<< HEAD
-            <!-- LOGOUT BUTTON -->
-            <div class="admin-bottom-bar">
-                <a href="Logout.php" class="admin-logout">LOGOUT</a>
-            </div>
-=======
         <!-- LOGOUT BUTTON -->
         <div class="admin-bottom-bar">
             <a href="Logout.php" class="admin-logout">LOGOUT</a>
         </div>
 
->>>>>>> 459693ba33b606948b94ad09a79d5b27ddbcf2b4
         </aside>
+
 
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
@@ -89,8 +95,11 @@ $username = $_SESSION["username"] ?? "Admin";
             <p>Use the navigation on the left to manage the E-Baon system.</p>
 
             <hr><br>
+
+            <!-- You can place your dashboard widgets here -->
             <p>This is your admin dashboard main panel.</p>
         </main>
+
     </div>
 
 <!-- SMART COLLAPSE SCRIPT -->
