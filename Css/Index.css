@@ -107,6 +107,7 @@ body {
 
 .btn-login:hover {
     background: linear-gradient(135deg, #16a34a, #15803d);
+    transform: scale(0.95);
 }
 
 .bottom-text {

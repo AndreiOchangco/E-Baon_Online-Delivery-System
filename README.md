@@ -1,7 +1,7 @@
 # E-Baon_Online-Delivery-System
 
 <p align="center">
-    <img src="./images/e-baon-logo.png" alt="E-Baon Logo" height="150px"/>
+    <img src="./images/e-baon-logo.png" alt="E-Baon Logo" height="200px"/>
 </p>
 
 <p align="justify">The E-Baon for CSF System is a web and mobile platform for parcel pick-up and drop-off in the City of San Fernando, La Union. It enables customers to schedule deliveries and allows drivers to manage requests, offering a fast, secure, and reliable local delivery service with real-time tracking and digital transactions.</p>
@@ -26,7 +26,7 @@
 *   **Shopping Cart & Wishlist:** Add to cart, cart preview, quantity updates, coupon application, save favorites.
 *   **Secure Checkout Process:** Clear steps, shipping info, order summary, "Thank You" page, invoice generation (PDF option).
 *   **User Accounts:** Registration, login, (potentially) order history.
-*   **Engagement & Information:** Blog, About Us, Contact page, product reviews, comment system.
+*   **Engagement & Information:** About Us, Contact page, product reviews, comment system.
 
 ### For Administrators (Admin Dashboard):
 *   **Dashboard Overview:** Statistics on orders, users, sales, comments.
@@ -37,9 +37,13 @@
 *   **Content Management:** Manage blog posts, categories.
 *   **Statistical Reports:** Charts for best sellers, revenue.
 
+### For Delivery Riders (Delivery Tracking View)
+*   **Order List View:** View customer order requests.
+*   **Tracking Analysis:** Mapping for accurate location and tracking records.
+
 ## 🛠️ Technology Stack
 
-*   **Frontend:** HTML5, CSS3, JavaScript, Bootstrap, Tailwind CSS (for Admin)
+*   **Frontend:** HTML5, CSS3, JavaScript
 *   **Backend:** PHP (Procedural or with a custom structure)
 *   **Database:** MySQL (Managed via phpMyAdmin in XAMPP)
 *   **Web Server:** Apache (via XAMPP)
@@ -49,7 +53,8 @@
 ### Prerequisites
 
 *   **XAMPP:** Installed and running (Apache, PHP, MySQL).
-*   **Git:** For cloning.
+*   **Git:** For cloning and commiting changes from local to remote.
+*   **GitHub:** For Remote Repository.
 
 ### Installation & Setup
 
@@ -69,8 +74,8 @@
     *   Default XAMPP credentials: Host: `localhost`, User: `root`, Password: `(empty)`, DB: `e_baon`.
 
 5.  **Accessing the Application:**
-    *   **Customer Site:** `http://localhost/Omacha-Shop_E-Commerce_Website/` (or `http://localhost/Omacha-Shop_E-Commerce_Website/Fontend/`)
-    *   **Admin Panel:** `http://localhost/Omacha-Shop_E-Commerce_Website/admin/` (or your specific admin path).
+    *   **Customer Site:** `http://localhost/E-Baon_Online-Delivery-System/` (or `http://localhost/E-Baon_Online-Delivery-System/Main/`)
+    *   **Admin Panel:** `http://localhost/E-Baon_Online-Delivery-System/Main/` (or your specific admin path).
         *   *Default Admin Credentials (if any):* Username: `admin`, Password: `admin` (Please update)
 
 ## 📝 License
@@ -82,10 +87,10 @@ You are free to Share and Adapt the material, under the terms of Attribution and
 ## 👤 Contributors
 
 *   **Team Developers**
-    *   **Andrei Luise Ochangco** - Team Leader, Repository Maintainer, Software Engineer, Project Manager, Sub-UI Designer, Sub-Programmer, Dependencies Checker, Database Administrator - [@AndreiOchangco](https://github.com/AndreiOchangco)
+    *   **Andrei Luise Ochangco** - Team Leader, Repository Maintainer, Software Engineer, Sub-UI Designer, Sub-Programmer, Dependencies Checker, Database Administrator - [@AndreiOchangco](https://github.com/AndreiOchangco)
     *   **Louis Ricardo Servito** - Main UI Designer - [@Lone-collab](https://github.com/Lone-collab)
-    *   **Ardy Aquino** - Main UI Designer - 
-    *   **Jonardson Ramat** - Database Manager
+    *   **Ardy Aquino** - Main UI Designer - [@]()
+    *   **Jonardson Ramat** - Database Manager, Back-end Programmer - [@]()
     *   **Mc Harley Disu** - Assistant
 
 </details>
