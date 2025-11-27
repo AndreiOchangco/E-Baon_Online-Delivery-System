@@ -1,199 +1,262 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+/* -----------------------------------------------------------
+   MAIN LAYOUT: LEFT SIDEBAR + MAIN CONTENT
+----------------------------------------------------------- */
 
-body {
-    background: linear-gradient(135deg, #dcfce7, #fefce8);
-    min-height: 100vh;
+.admin-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.admin-body {
-    background: linear-gradient(135deg, #dcfce7, #fefce8);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-.admin-dashboard {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.admin-head {
+    height: 100vh;
     width: 100%;
-    padding: 14px 22px 12px 22px;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #022c22, #064e3b);
-    box-shadow: 0px 14px 30px rgba(6, 95, 70, 0.65);
 }
 
-.admin-logo-box {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 12px;
-    font-size: 18px;
-    color: #ecfdf5;
-}
-
-.admin-head-text {
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    text-align: center;
-}
-
-.admin-head-text h1 {
-    font-size: 20px;
-    color: #ecfdf5;
-}
-
-.admin-head-text p {
-    font-size: 13px;
-    color: #ecfdf5;
-}
-
-.admin-pill-wrap {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 22px;
-}
-
-.admin-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 32px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    font-size: 14px;
-    cursor: pointer;
-    color: #ffffff;
-    gap: 6px;
-
-    border: none;       /* FIX: remove black border */
-    outline: none;      /* FIX: remove outline */
-    box-shadow: 0px 10px 22px rgba(22, 163, 74, 0.55); /* kept */
-}
-
-.admin-pill:focus,
-.admin-pill:active {
-    border: none;
-    outline: none;
-}
-
-.admin-card-grid {
-    width: 100%;
-    max-width: 920px;
-    margin: 0px auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 90px;
-}
-
-.admin-card {
-    width: clamp(150px, 40vw, 220px);
-    height: clamp(110px, 18vw, 130px);
-    border-radius: 20px;
+/* LEFT SIDEBAR BASE */
+.admin-sidebar {
+    width: 260px;
     background: #ffffff;
-    text-decoration: none;
-    color: #064e3b;
+    border-right: 1px solid #cbd5e1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 12px 28px rgba(22, 101, 52, 0.3);
+    padding-bottom: 20px;
+    overflow-y: auto;
+    transition: width 0.3s ease-in-out;
 }
 
-.admin-card:hover {
-    box-shadow: 0px 16px 36px rgba(22, 101, 52, 0.45);
-    transform: scale(0.95); 
+/* Collapsed mode (desktop trigger) */
+.admin-sidebar.collapsed {
+    width: 80px;
 }
 
-
-.admin-card-icon {
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
-.admin-card-text {
-    font-size: 14px;
-}
-
-.admin-bottom-bar {
-    margin-top: auto;
-    width: 100%;
-    background: transparent;
-    padding: 14px 22px 20px 22px;
-    display: flex;
-    justify-content: center;
-}
-
-.admin-hello {
+.admin-sidebar.collapsed .admin-head-text,
+.admin-sidebar.collapsed .admin-menu-item-text {
     display: none;
 }
 
-.btn-login {
-    width: 100%;
-    padding: 10px 0px;
-    margin-top: 10px;
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    box-shadow: 0px 12px 26px rgba(22, 163, 74, 0.55);
+.admin-sidebar.collapsed .admin-menu-item {
+    justify-content: center;
 }
 
-.btn-login:hover {
-    background: linear-gradient(135deg, #16a34a, #15803d);
+.admin-sidebar.collapsed .admin-menu-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 90px;
+    background: #064e3b;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.admin-sidebar.collapsed .admin-menu-item:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Sidebar Header */
+.admin-sidebar .admin-head {
+    width: 100%;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #022c22, #064e3b);
+    box-shadow: 0px 10px 18px rgba(6, 95, 70, 0.45);
+}
+
+/* Sidebar Toggle */
+.sidebar-toggle {
+    background: transparent;
+    border: none;
+    color: #ecfdf5;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 8px;
+}
+
+/* Logo */
+.admin-logo-box {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+/* Menu Container */
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+/* Menu Items */
+.admin-menu-item {
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    background: #f0fdf4;
+    text-decoration: none;
+    color: #064e3b;
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 6px 12px rgba(22, 163, 74, 0.25);
+    transition: 0.15s ease;
+    position: relative;
+}
+
+.admin-menu-item:hover {
+    background: #bbf7d0;
+    transform: translateX(5px);
+}
+
+.admin-menu-item-icon {
+    font-size: 20px;
+}
+
+/* Right Side Content */
+.admin-main-content {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.admin-main-content h2 {
+    color: #064e3b;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.admin-main-content p {
+    color: #065f46;
+    font-size: 15px;
+}
+
+/* Logout */
+.admin-sidebar .admin-bottom-bar {
+    margin-top: auto;
+    padding: 20px 14px;
 }
 
 .admin-logout {
-    width: 320px;
+    width: 100%;
     text-align: center;
-    text-decoration: none;
-    color: #ecfdf5;
-    border-radius: 12px;
-    padding: 10px 0px;
     background: linear-gradient(135deg, #f97316, #ea580c);
+    color: #ffffff;
+    padding: 12px 0;
+    border-radius: 12px;
     font-weight: bold;
-    font-size: 15px;
     box-shadow: 0px 10px 24px rgba(234, 88, 12, 0.55);
 }
 
 .admin-logout:hover {
-    box-shadow: 0px 16px 36px rgba(22, 101, 52, 0.45);
-    transform: scale(0.95); 
+    transform: scale(0.96);
 }
 
-
-.admin-back-btn {
-    display: inline-block;
-    padding: 10px 44px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 14px;
-    background: #f97316;
-    color: #ffffff;
-    box-shadow: 0px 18px 40px rgba(194, 65, 12, 0.55);
+/* Disable legacy layout */
+body,
+.admin-body {
+    justify-content: flex-start !important;
+    align-items: stretch !important;
 }
 
+.admin-dashboard {
+    display: none;
+}
+
+.admin-card-grid {
+    justify-content: flex-start;
+}
+
+/* -----------------------------------------------------------
+   MOBILE BREAKDOWN BEHAVIOR
+----------------------------------------------------------- */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .admin-sidebar {
+        width: 200px;
+    }
+
+    .admin-main-content {
+        padding: 24px;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    /* Sidebar becomes a top bar */
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #cbd5e1;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .admin-sidebar .admin-head {
+        padding: 10px 12px;
+        background: none;
+        box-shadow: none;
+    }
+
+    /* Menu becomes horizontal scroll */
+    .admin-menu {
+        flex-direction: row;
+        margin-top: 0;
+        padding: 0;
+        gap: 10px;
+        width: max-content;
+    }
+
+    .admin-menu-item {
+        flex-direction: row;
+        white-space: nowrap;
+        margin-bottom: 0;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+    }
+
+    /* Content goes full width */
+    .admin-main-content {
+        padding: 20px;
+    }
+
+    /* Logout button turns into small icon at end of scroll */
+    .admin-bottom-bar {
+        padding: 0;
+        margin-left: auto;
+    }
+
+    .admin-logout {
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
+/* Extra-small devices */
+@media (max-width: 480px) {
+    .admin-menu-item {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .admin-main-content {
+        padding: 16px;
+    }
+}

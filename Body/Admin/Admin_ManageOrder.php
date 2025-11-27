@@ -24,7 +24,7 @@ $username = $_SESSION["username"] ?? "Admin";
     <header class="admin-head">
         <div class="admin-logo-box">L</div>
         <div class="admin-head-text">
-            <h1>Omacha Shop</h1>
+            <h1>E-Baon</h1>
             <p>admin</p>
         </div>
     </header>
@@ -46,9 +46,11 @@ $username = $_SESSION["username"] ?? "Admin";
             <table class="order-table">
                 <thead>
                     <tr>
-                        <th style="width:80px;">ID</th>
-                        <th>Name</th>
-                        <th style="width:140px;">Status</th>
+                        <th style="width: auto; text-align: center;">ID</th>
+                        <th style="width: auto; text-align: center;">Name</th>
+                        <th style="width: auto; text-align: center;">Quantity</th>
+                        <th style="width: auto; text-align: center;">Price</th>
+                        <th style="width: auto; text-align: center;">Status</th>
                     </tr>
                 </thead>
                 <tbody>

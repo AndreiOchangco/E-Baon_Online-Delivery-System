@@ -13,61 +13,128 @@ $username = $_SESSION["username"] ?? "Admin";
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-     <link rel="shortcut icon" href="../images/e-baon-logo.png">
+    <link rel="shortcut icon" href="../images/e-baon-logo.png">
     <link rel="stylesheet" href="../Css/Admin.css">
 </head>
-<body class="admin-body">
-    
-<div class="admin-dashboard">
 
-    <header>
+<body class="admin-body">
+
+<div class="admin-container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="admin-sidebar" id="sidebar">
+
         <div class="admin-head">
             <img class="admin-logo-box" src="../images/e-baon-logo-outline.png" alt="">
             <div class="admin-head-text">
-                <h1>E-Baon</h1>
-                <p>admin</p>
+                <h3>E-Baon</h3>
+                <p>Admin</p>
             </div>
+
+            <!-- Sidebar Toggle -->
+            <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
         </div>
-    </header>
 
-    <div class="admin-separator"></div>
+        <!-- MENU ITEMS -->
+        <nav class="admin-menu">
 
-    <div class="admin-pill-wrap">
-        <button class="admin-pill">📊 dashboard</button>
-    </div>
+            <a href="../Body/Admin/Admin_Dashboard.php"
+               class="admin-menu-item"
+               data-tooltip="Dashboard">
+                <span class="admin-menu-item-icon">📊</span>
+                <span class="admin-menu-item-text">Dashboard</span>
+            </a>
 
-    <section class="admin-card-grid">
-        <a href="../Body/Admin/Admin_ManageOrder.php" class="admin-card">
-            <div class="admin-card-icon">📋</div>
-            <div class="admin-card-text">Manage Order</div>
-        </a>
+            <a href="../Body/Admin/Admin_ManageOrder.php"
+               class="admin-menu-item"
+               data-tooltip="Manage Orders">
+                <span class="admin-menu-item-icon">📋</span>
+                <span class="admin-menu-item-text">Manage Order</span>
+            </a>
 
-        <a href="../Body/Admin/Admin_ManageProduct.php" class="admin-card">
-            <div class="admin-card-icon">📦</div>
-            <div class="admin-card-text">Manage Product</div>
-        </a>
+            <a href="../Body/Admin/Admin_ManageProduct.php"
+               class="admin-menu-item"
+               data-tooltip="Manage Products">
+                <span class="admin-menu-item-icon">📦</span>
+                <span class="admin-menu-item-text">Manage Product</span>
+            </a>
 
-        <a href="../Body/Admin/Admin_ManageCustomer.php" class="admin-card">
-            <div class="admin-card-icon">🙎🏻‍♂️</div>
-            <div class="admin-card-text">Manage Customer</div>
-        </a>
+            <a href="../Body/Admin/Admin_ManageCustomer.php"
+               class="admin-menu-item"
+               data-tooltip="Customers">
+                <span class="admin-menu-item-icon">🙎🏻‍♂️</span>
+                <span class="admin-menu-item-text">Manage Customer</span>
+            </a>
 
-        <a href="../Body/Admin/Admin_ManageDelivery.php" class="admin-card">
-            <div class="admin-card-icon">🛵</div>
-            <div class="admin-card-text">Manage Delivery D.</div>
-        </a>
+            <a href="../Body/Admin/Admin_ManageDelivery.php"
+               class="admin-menu-item"
+               data-tooltip="Delivery">
+                <span class="admin-menu-item-icon">🛵</span>
+                <span class="admin-menu-item-text">Manage Delivery D.</span>
+            </a>
 
-        <a href="../Body/Admin/Admin_ManageAdminAcc.php" class="admin-card admin-card-large">
-            <div class="admin-card-icon">⚙️</div>
-            <div class="admin-card-text">Manage Admin Acc.</div>
-        </a>
-    </section>
+            <a href="../Body/Admin/Admin_ManageAdminAcc.php"
+               class="admin-menu-item"
+               data-tooltip="Admin Accounts">
+                <span class="admin-menu-item-icon">⚙️</span>
+                <span class="admin-menu-item-text">Manage Admin Acc.</span>
+            </a>
 
-    <div class="admin-bottom-bar">
-        <a href="Logout.php" class="btn-login admin-logout">LOGOUT</a>
-    </div>
+        </nav>
+
+        <!-- LOGOUT BUTTON -->
+        <div class="admin-bottom-bar">
+            <a href="Logout.php" class="admin-logout">LOGOUT</a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="admin-main-content">
+        <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
+        <p>Use the navigation on the left to manage the E-Baon system.</p>
+
+        <hr><br>
+
+        <!-- You can place your dashboard widgets here -->
+        <p>This is your admin dashboard main panel.</p>
+    </main>
 
 </div>
+
+<!-- SMART COLLAPSE SCRIPT -->
+<script>
+const sidebar = document.getElementById('sidebar');
+const MOBILE_BREAKPOINT = 768;
+
+// Tracks if user manually toggled the sidebar
+let userForcedCollapse = false;
+
+// Manual toggle control
+function toggleSidebar() {
+    userForcedCollapse = true;
+    sidebar.classList.toggle('collapsed');
+}
+
+// Auto-collapse on mobile, expand on desktop
+function handleResponsiveSidebar() {
+    // If user manually toggled, do not override
+    if (userForcedCollapse) return;
+
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+        sidebar.classList.add('collapsed');
+    } else {
+        sidebar.classList.remove('collapsed');
+    }
+}
+
+// Run on page load
+handleResponsiveSidebar();
+
+// Run on window resize
+window.addEventListener('resize', handleResponsiveSidebar);
+</script>
 
 </body>
 </html>

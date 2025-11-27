@@ -55,7 +55,7 @@ $username = $_SESSION["username"] ?? "Admin";
                 <div class="admin-details-card">
 
                     <div class="admin-main-field">
-                        <div class="admin-main-pill">PRODUCT NAME</div>
+                        <div class="admin-main-pill">CUSTOMER DETAILS</div>
                     </div>
 
                     <div class="admin-details-grid">
