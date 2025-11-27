@@ -204,6 +204,11 @@
 }
 
 /* Disable legacy layout */
+body {
+    margin: 0;
+    padding: 0;
+}
+
 body,
 .admin-body {
     justify-content: flex-start !important;
