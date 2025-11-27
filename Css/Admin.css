@@ -22,8 +22,9 @@
 
 /* Collapsed mode (desktop trigger) */
 .admin-sidebar.collapsed {
-    width: 80px;
+    width: 110px;
 }
+
 
 .admin-sidebar.collapsed .admin-head-text,
 .admin-sidebar.collapsed .admin-menu-item-text {
@@ -57,7 +58,8 @@
 /* Sidebar Header */
 .admin-sidebar .admin-head {
     width: 100%;
-    padding: 16px 18px;
+    padding: 16px 10px;
+    margin-right: 20px;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #022c22, #064e3b);
@@ -71,7 +73,7 @@
     color: #ecfdf5;
     font-size: 20px;
     cursor: pointer;
-    margin-left: auto;
+    margin: 0 auto ;
     padding: 8px;
 }
 
