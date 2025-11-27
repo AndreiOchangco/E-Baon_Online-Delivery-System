@@ -92,13 +92,9 @@ $username = $_SESSION["username"] ?? "Admin";
 
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
-            <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
-            <p>Use the navigation on the left to manage the E-Baon system.</p>
-
-            <hr><br>
-
-            <!-- You can place your dashboard widgets here -->
-            <p>This is your admin dashboard main panel.</p>
+            <div style="width: 100%; max-width: 800px; height: 400px; margin-top: 40px;">
+                <canvas id="salesChart"></canvas>
+            </div>
         </main>
 
     </div>
@@ -137,6 +133,8 @@ const observer = new MutationObserver(() => {
 });
 observer.observe(sidebar, { attributes: true, attributeFilter: ['class'] });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../Javascript/Chart.js"></script>
 
 </body>
 </html>
