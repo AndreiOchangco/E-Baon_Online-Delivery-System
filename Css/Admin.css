@@ -176,11 +176,17 @@
 
 /* Right Side Content */
 .admin-main-content {
-    margin-left: 260px; /* sidebar width */
+    margin-left: 260px; /* default sidebar width */
     padding: 32px;
-    padding-top: 32px; /* optional spacing inside */
+    padding-top: 32px; /* spacing inside */
     height: calc(100vh - 64px); /* full height minus header */
     overflow-y: auto;
+    transition: margin-left 0.3s ease-in-out; /* smooth shift when sidebar collapses */
+}
+
+/* Adjust main content when sidebar is collapsed */
+.admin-sidebar.collapsed ~ .admin-main-content {
+    margin-left: 110px; /* collapsed sidebar width */
 }
 
 /* Adjust for header fixed position so no overlap */

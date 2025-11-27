@@ -19,7 +19,6 @@ $username = $_SESSION["username"] ?? "Admin";
 
 <body class="admin-body">
     <header class="admin-head">
-        <img class="admin-logo-box" src="../images/e-baon-logo-outline.png" alt="">
         <div class="admin-head-text">
             <h3>E-Baon</h3>
             <p>Admin</p>
