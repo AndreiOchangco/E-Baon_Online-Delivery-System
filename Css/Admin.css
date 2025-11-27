@@ -1,6 +1,7 @@
 /* -----------------------------------------------------------
    MAIN LAYOUT: LEFT SIDEBAR + MAIN CONTENT
 ----------------------------------------------------------- */
+
 .admin-container {
     display: flex;
     height: 100vh;
@@ -10,11 +11,10 @@
 /* HEADER (fixed) */
 .admin-head {
     width: 100%;
-    max-width: 100vw;  /* prevents horizontal overflow */
     padding: 16px 24px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center header text */
+    justify-content: flex-start;
     background: linear-gradient(135deg, #022c22, #064e3b);
     box-shadow: 0px 5px 15px rgba(6, 95, 70, 0.45);
     color: #ffffff;
@@ -38,10 +38,14 @@
     line-height: 1.2;
 }
 
-/* Hamburger on the left */
+.admin-head-text {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar Toggle Button in header */
 .sidebar-toggle {
-    position: absolute;
-    left: 16px;
     background: transparent;
     border: none;
     color: #ecfdf5;
@@ -79,6 +83,7 @@
 .admin-sidebar.collapsed {
     width: 110px;
 }
+
 
 .admin-sidebar.collapsed .admin-head-text,
 .admin-sidebar.collapsed .admin-menu-item-text {
@@ -221,17 +226,14 @@
     box-shadow: 0px 6px 12px #30bf9693;
 }
 
-/* Body reset */
-* {
-    box-sizing: border-box;
-}
-
+/* Disable legacy layout */
 body {
     margin: 0;
     padding: 0;
 }
 
-body, .admin-body {
+body,
+.admin-body {
     justify-content: flex-start !important;
     align-items: stretch !important;
 }
