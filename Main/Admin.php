@@ -69,18 +69,10 @@ $username = $_SESSION["username"] ?? "Admin";
                 </a>
             </nav>
 
-<<<<<<< HEAD
             <!-- LOGOUT BUTTON -->
             <div class="admin-bottom-bar">
                 <a href="Logout.php" class="admin-logout">LOGOUT</a>
             </div>
-=======
-        <!-- LOGOUT BUTTON -->
-        <div class="admin-bottom-bar">
-            <a href="Logout.php" class="admin-logout">LOGOUT</a>
-        </div>
-
->>>>>>> 459693ba33b606948b94ad09a79d5b27ddbcf2b4
         </aside>
 
         <!-- MAIN CONTENT AREA -->
