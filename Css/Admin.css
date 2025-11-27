@@ -66,9 +66,14 @@
 
 /* Collapsed mode (desktop trigger) */
 .admin-sidebar.collapsed {
-    width: 80px;
+    width: 110px;
 }
 
+<<<<<<< HEAD
+=======
+
+.admin-sidebar.collapsed .admin-head-text,
+>>>>>>> 0e590ba0b7bfefc363b39e64bcae05a22218a26b
 .admin-sidebar.collapsed .admin-menu-item-text {
     display: none;
 }
@@ -97,6 +102,38 @@
     transform: translateX(0);
 }
 
+<<<<<<< HEAD
+=======
+/* Sidebar Header */
+.admin-sidebar .admin-head {
+    width: 100%;
+    padding: 16px 10px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #022c22, #064e3b);
+    box-shadow: 0px 10px 18px rgba(6, 95, 70, 0.45);
+}
+
+/* Sidebar Toggle */
+.sidebar-toggle {
+    background: transparent;
+    border: none;
+    color: #ecfdf5;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 auto ;
+    padding: 8px;
+}
+
+/* Logo */
+.admin-logo-box {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+>>>>>>> 0e590ba0b7bfefc363b39e64bcae05a22218a26b
 /* Menu Container */
 .admin-menu {
     display: flex;
