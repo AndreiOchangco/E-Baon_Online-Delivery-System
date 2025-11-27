@@ -93,7 +93,7 @@ $username = $_SESSION["username"] ?? "Admin";
             </section>
 
             <div class="admin-bottom-btn-wrap">
-                <a href="../../Main/Admin.php" class="admin-back-btn">
+                <a href="../../Main/Admin.php" class="admin-back-btn" >
                     Back to Dashboard
                 </a>
             </div>
