@@ -69,11 +69,8 @@
     width: 110px;
 }
 
-<<<<<<< HEAD
-=======
 
 .admin-sidebar.collapsed .admin-head-text,
->>>>>>> 0e590ba0b7bfefc363b39e64bcae05a22218a26b
 .admin-sidebar.collapsed .admin-menu-item-text {
     display: none;
 }
