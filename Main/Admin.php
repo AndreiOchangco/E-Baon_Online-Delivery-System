@@ -34,7 +34,7 @@ $username = $_SESSION["username"] ?? "Admin";
         <!-- LEFT SIDEBAR -->
         <aside class="admin-sidebar" id="sidebar">
             <!-- Logo at top -->
-            <img class="admin-logo-box" src="../images/e-baon-logo-outline.png" alt="E-Baon Logo">
+            <img class="admin-logo-box" src="../images/e-baon-logo.png" alt="E-Baon Logo">
 
             <!-- MENU ITEMS -->
             <nav class="admin-menu">
