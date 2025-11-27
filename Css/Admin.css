@@ -108,8 +108,6 @@
     transform: translateX(0);
 }
 
-<<<<<<< HEAD
-=======
 /* Sidebar Header */
 .admin-sidebar .admin-head {
     width: 100%;
@@ -139,7 +137,6 @@
     margin-right: 10px;
 }
 
->>>>>>> 459693ba33b606948b94ad09a79d5b27ddbcf2b4
 /* Menu Container */
 .admin-menu {
     display: flex;
