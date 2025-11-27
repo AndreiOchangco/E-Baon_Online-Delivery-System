@@ -10,19 +10,19 @@
 /* HEADER (fixed) */
 .admin-head {
     width: 100%;
-    max-width: 100vw;  /* prevents horizontal overflow */
+    max-width: 100vw;
     padding: 16px 24px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center header text */
+    justify-content: center;
     background: linear-gradient(135deg, #022c22, #064e3b);
     box-shadow: 0px 5px 15px rgba(6, 95, 70, 0.45);
     color: #ffffff;
-    position: fixed; /* fixed to top */
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    height: 64px; /* fixed header height */
+    height: 64px;
 }
 
 .admin-head-text {
@@ -41,11 +41,11 @@
 /* Hamburger on the left */
 .sidebar-toggle {
     position: absolute;
-    left: 16px;
+    left: 15px;
     background: transparent;
     border: none;
     color: #ecfdf5;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     z-index: 1001;
     padding: 8px;
@@ -57,9 +57,10 @@
     width: 125px;
     height: 125px;
     margin: 16px auto;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
-/* LEFT SIDEBAR BASE (fixed) */
+/* LEFT SIDEBAR BASE */
 .admin-sidebar {
     width: 260px;
     background: #ffffff;
@@ -68,27 +69,36 @@
     flex-direction: column;
     padding-bottom: 20px;
     transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-    position: fixed; /* fixed below header */
-    top: 64px; /* header height */
+    position: fixed;
+    top: 64px;
     left: 0;
-    height: calc(100vh - 64px); /* fits below header */
-    overflow-y: auto; /* scroll if menu too tall */
+    height: calc(100vh - 64px);
+    overflow-y: auto;
 }
 
-/* Collapsed mode (desktop trigger) */
+/* Collapsed mode */
 .admin-sidebar.collapsed {
-    width: 110px;
+    width: 115px;
 }
 
+/* Shrink logo when collapsed */
+.admin-sidebar.collapsed .admin-logo-box {
+    width: 75px;
+    height: 75px;
+}
+
+/* Hide menu text in collapsed mode */
 .admin-sidebar.collapsed .admin-head-text,
 .admin-sidebar.collapsed .admin-menu-item-text {
     display: none;
 }
 
+/* Menu items alignment in collapsed mode */
 .admin-sidebar.collapsed .admin-menu-item {
     justify-content: center;
 }
 
+/* Tooltip for collapsed menu */
 .admin-sidebar.collapsed .admin-menu-item::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -104,10 +114,10 @@
     pointer-events: none;
 }
 
-.admin-sidebar.collapsed .admin-menu-item:hover::after {
+/*.admin-sidebar.collapsed .admin-menu-item:hover::after {
     opacity: 1;
     transform: translateX(0);
-}
+}*/
 
 /* Sidebar Header */
 .admin-sidebar .admin-head {
@@ -118,24 +128,6 @@
     align-items: center;
     background: linear-gradient(135deg, #022c22, #064e3b);
     box-shadow: 0px 10px 18px rgba(6, 95, 70, 0.45);
-}
-
-/* Sidebar Toggle */
-.sidebar-toggle {
-    background: transparent;
-    border: none;
-    color: #ecfdf5;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 auto 0 0;
-    padding: 8px;
-}
-
-/* Logo */
-.admin-logo-box {
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
 }
 
 /* Menu Container */
@@ -173,29 +165,39 @@
     font-size: 20px;
 }
 
+.admin-menu-item-text {
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+}
+
+/* Hide only menu text during transition */
+.admin-sidebar.transitioning .admin-menu-item-text {
+    opacity: 0;
+}
+
 /* Right Side Content */
 .admin-main-content {
     margin-left: 260px; /* default sidebar width */
     padding: 32px;
-    padding-top: 32px; /* spacing inside */
-    height: calc(100vh - 64px); /* full height minus header */
+    padding-top: 32px;
+    height: calc(100vh - 64px);
     overflow-y: auto;
-    transition: margin-left 0.3s ease-in-out; /* smooth shift when sidebar collapses */
+    transition: margin-left 0.3s ease-in-out;
 }
 
-/* Adjust main content when sidebar is collapsed */
+/* Adjust when sidebar is collapsed */
 .admin-sidebar.collapsed ~ .admin-main-content {
-    margin-left: 110px; /* collapsed sidebar width */
+    margin-left: 110px;
 }
 
-/* Adjust for header fixed position so no overlap */
+/* Adjust for header */
 .admin-main-content::before {
     content: "";
     display: block;
-    height: 64px; /* same as header height */
+    height: 64px;
 }
 
-/* Logout */
+/* Logout Button */
 .admin-sidebar .admin-bottom-bar {
     margin-top: auto;
     padding: 20px 14px;
@@ -240,11 +242,13 @@ body, .admin-body {
     align-items: stretch !important;
 }
 
+/* Chart container */
 .chart-container {
     width: 100%;
     max-width: 800px;
     height: 400px;
     margin-top: 40px;
+    padding: 20px;
     border: 1px solid #000;
     border-radius: 10px;
 }

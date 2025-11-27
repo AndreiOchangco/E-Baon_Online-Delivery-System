@@ -39,43 +39,37 @@ $username = $_SESSION["username"] ?? "Admin";
             <nav class="admin-menu">
 
                 <a href="../Body/Admin/Admin_Dashboard.php"
-                class="admin-menu-item"
-                data-tooltip="Dashboard">
+                class="admin-menu-item">
                     <span class="admin-menu-item-icon">📊</span>
                     <span class="admin-menu-item-text">Dashboard</span>
                 </a>
 
                 <a href="../Body/Admin/Admin_ManageOrder.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Orders">
+                class="admin-menu-item">
                     <span class="admin-menu-item-icon">📋</span>
                     <span class="admin-menu-item-text">Manage Order</span>
                 </a>
 
                 <a href="../Body/Admin/Admin_ManageProduct.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Products">
+                class="admin-menu-item">
                     <span class="admin-menu-item-icon">📦</span>
                     <span class="admin-menu-item-text">Manage Product</span>
                 </a>
 
                 <a href="../Body/Admin/Admin_ManageCustomer.php"
-                class="admin-menu-item"
-                data-tooltip="Customers">
+                class="admin-menu-item">
                     <span class="admin-menu-item-icon">🙎🏻‍♂️</span>
                     <span class="admin-menu-item-text">Manage Customer</span>
                 </a>
 
                 <a href="../Body/Admin/Admin_ManageDelivery.php"
-                class="admin-menu-item"
-                data-tooltip="Delivery">
+                class="admin-menu-item">
                     <span class="admin-menu-item-icon">🛵</span>
                     <span class="admin-menu-item-text">Manage Delivery D.</span>
                 </a>
 
                 <a href="../Body/Admin/Admin_ManageAdminAcc.php"
-                class="admin-menu-item"
-                data-tooltip="Admin Accounts">
+                class="admin-menu-item">
                     <span class="admin-menu-item-icon">⚙️</span>
                     <span class="admin-menu-item-text">Manage Admin Acc.</span>
                 </a>
@@ -109,9 +103,33 @@ let userForcedCollapse = false;
 function toggleSidebar() {
     if (window.innerWidth < MOBILE_BREAKPOINT) {
         sidebar.classList.toggle('show');
+        return;
+    }
+
+    const isCollapsed = sidebar.classList.contains('collapsed');
+
+    // Start transition: hide text/logo
+    sidebar.classList.add('transitioning');
+    sidebar.classList.remove('expanded-ready');
+
+    if (isCollapsed) {
+        // EXPANDING
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.add('transitioning'); // hide menu text only
+
+        // Restore text/logo after transition
+        setTimeout(() => {
+            sidebar.classList.remove('transitioning');
+        }, 300); // match CSS transition duration
     } else {
-        userForcedCollapse = true;
-        sidebar.classList.toggle('collapsed');
+        // COLLAPSING
+        sidebar.classList.add('collapsed');
+        sidebar.classList.add('transitioning'); // hide menu text only
+
+        // End transition after animation
+        setTimeout(() => {
+            sidebar.classList.remove('transitioning');
+        }, 300);
     }
 }
 
@@ -123,7 +141,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Optional: prevent scrolling content behind sidebar when open
+// Prevent scrolling content behind sidebar when open
 const observer = new MutationObserver(() => {
     if (sidebar.classList.contains('show')) {
         document.body.style.overflow = 'hidden';
