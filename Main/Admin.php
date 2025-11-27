@@ -92,7 +92,7 @@ $username = $_SESSION["username"] ?? "Admin";
 
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
-            <div style="width: 100%; max-width: 800px; height: 400px; margin-top: 40px;">
+            <div class="chart-container">
                 <canvas id="salesChart"></canvas>
             </div>
         </main>
