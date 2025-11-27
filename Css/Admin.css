@@ -30,6 +30,7 @@
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
+    font-size: 1.1rem;
 }
 
 .admin-head h3,
@@ -93,16 +94,69 @@
     display: none;
 }
 
-/* Menu items alignment in collapsed mode */
+/* Menu items alignment and icon animation */
+.admin-sidebar .admin-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start; /* start with icons on left */
+    padding: 12px 18px;
+    transition: justify-content 0.3s ease, padding 0.3s ease;
+    border-radius: 14px;
+    background: #f0fdf4;
+    text-decoration: none;
+    color: #064e3b;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0px 6px 12px rgba(22, 163, 74, 0.25);
+    position: relative;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-menu-item:hover {
+    background: #bbf7d0;
+}
+
+.admin-menu-item-icon {
+    font-size: 25px;
+    flex-shrink: 0;
+    transition: margin 0.3s ease, transform 0.3s ease;
+}
+
+/* Collapsed mode: center icons smoothly */
 .admin-sidebar.collapsed .admin-menu-item {
-    justify-content: center;
+    justify-content: center; 
+    padding: 12px 0;
+}
+
+.admin-sidebar.collapsed .admin-menu-item-icon {
+    transform: translateX(0); 
+}
+
+.admin-menu-item-text {
+    opacity: 1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Fade out text during collapse transition */
+.admin-sidebar.transitioning .admin-menu-item-text {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+/* Restore text after expansion */
+.admin-sidebar.expanded-ready .admin-menu-item-text {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* Tooltip for collapsed menu */
 .admin-sidebar.collapsed .admin-menu-item::after {
     content: attr(data-tooltip);
-    position: absolute;
-    left: 90px;
+    position: fixed; /* outside the sidebar */
+    left: 130px;
     background: #064e3b;
     color: #ffffff;
     padding: 6px 10px;
@@ -112,12 +166,13 @@
     transform: translateX(-10px);
     transition: all 0.2s ease-in-out;
     pointer-events: none;
+    z-index: 9999;
 }
 
-/*.admin-sidebar.collapsed .admin-menu-item:hover::after {
+.admin-sidebar.collapsed .admin-menu-item:hover::after {
     opacity: 1;
     transform: translateX(0);
-}*/
+}
 
 /* Sidebar Header */
 .admin-sidebar .admin-head {
@@ -137,42 +192,7 @@
     margin-top: 20px;
     padding-left: 14px;
     padding-right: 14px;
-}
-
-/* Menu Items */
-.admin-menu-item {
-    padding: 12px 18px;
-    margin-bottom: 10px;
-    border-radius: 14px;
-    background: #f0fdf4;
-    text-decoration: none;
-    color: #064e3b;
-    font-weight: bold;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
     gap: 10px;
-    box-shadow: 0px 6px 12px rgba(22, 163, 74, 0.25);
-    transition: 0.15s ease;
-    position: relative;
-}
-
-.admin-menu-item:hover {
-    background: #bbf7d0;
-}
-
-.admin-menu-item-icon {
-    font-size: 20px;
-}
-
-.admin-menu-item-text {
-    opacity: 1;
-    transition: opacity 0.15s ease-in-out;
-}
-
-/* Hide only menu text during transition */
-.admin-sidebar.transitioning .admin-menu-item-text {
-    opacity: 0;
 }
 
 /* Right Side Content */
@@ -187,7 +207,7 @@
 
 /* Adjust when sidebar is collapsed */
 .admin-sidebar.collapsed ~ .admin-main-content {
-    margin-left: 110px;
+    margin-left: 115px;
 }
 
 /* Adjust for header */
