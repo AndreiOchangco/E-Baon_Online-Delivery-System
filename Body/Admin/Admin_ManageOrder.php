@@ -87,27 +87,29 @@ $username = $_SESSION["username"] ?? "Admin";
 
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
+            <div class="order-wrapper">
                 <div class="order-card">
 
-                <div class="order-search-row">
-                    <input type="text" placeholder="Search Order Name">
-                    <button class="order-search-btn">🔍</button>
+                    <div class="order-search-row">
+                        <input type="text" placeholder="Search Order Name">
+                        <button class="order-search-btn">🔍</button>
+                    </div>
+
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th style="width: auto; text-align: center;">ID</th>
+                                <th style="width: auto; text-align: center;">Name</th>
+                                <th style="width: auto; text-align: center;">Quantity</th>
+                                <th style="width: auto; text-align: center;">Price</th>
+                                <th style="width: auto; text-align: center;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
                 </div>
-
-                <table class="order-table">
-                    <thead>
-                        <tr>
-                            <th style="width: auto; text-align: center;">ID</th>
-                            <th style="width: auto; text-align: center;">Name</th>
-                            <th style="width: auto; text-align: center;">Quantity</th>
-                            <th style="width: auto; text-align: center;">Price</th>
-                            <th style="width: auto; text-align: center;">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-
             </div>
 
             <div class="admin-bottom-bar">
