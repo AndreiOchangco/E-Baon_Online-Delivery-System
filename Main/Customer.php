@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
@@ -18,23 +18,24 @@ $username = $_SESSION["username"] ?? "Customer";
 <body class="customer-body">
 
 <header class="customer-head">
-    <div class="customer-logo-box">L</div>
+    <div class="customer-logo-box">
+        <button type="button" class="customer-menu-toggle">☰</button>
+    </div>
+
     <div class="customer-head-text">
         <h1>Omacha Shop</h1>
         <p>customer</p>
+    </div>
+
+    <div class="customer-head-search">
+        <span class="customer-search-icon">🔍</span>
+        <input type="text" placeholder="Search for shop">
     </div>
 </header>
 
 <div class="customer-separator"></div>
 
 <main class="customer-main">
-
-    <div class="customer-search-row">
-        <div class="customer-search-box">
-            <span class="customer-search-icon">🔍</span>
-            <input type="text" placeholder="Search for shop">
-        </div>
-    </div>
 
     <div class="customer-promo-row">
         <div class="promo-banner-box">
@@ -49,16 +50,211 @@ $username = $_SESSION["username"] ?? "Customer";
     </div>
 
     <div class="customer-category-row">
-        <div class="category-circle"></div>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
+        <button class="category-circle-btn">
+            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+        </button>
     </div>
 
     <section class="customer-shop-row">
 
         <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
-                <div class="shop-name">Name of the Shop</div>
                 <div class="shop-picture">
                     <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 1">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 2">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 3">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 4">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 5">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 6">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 7">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 8">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 9">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 10">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 11">
+                </div>
+                <div class="shop-info">Name of the product / price</div>
+                <button class="shop-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div class="shop-column">
+            <div class="shop-name">Name of the Shop</div>
+            <div class="shop-card">
+                <div class="shop-picture">
+                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 12">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -70,10 +266,19 @@ $username = $_SESSION["username"] ?? "Customer";
 </main>
 
 <footer class="customer-bottom-nav">
-    <button class="bottom-icon">🛒</button>
+    <a href="../Body/Customer/Cart.php" class="bottom-icon" style="text-decoration:none;">🛒</a>
     <div class="bottom-status">No Order Yet</div>
-    <button class="bottom-icon">👤</button>
+    <a href="../Body/Customer/Profile.php" class="bottom-icon" style="text-decoration:none;">👤</a>
 </footer>
+
+<div class="modal" id="addModal">
+    <div class="modal-content">
+        <p>Item added to cart</p>
+        <button id="addModalOk">OK</button>
+    </div>
+</div>
+
+<script src="../Javascript/Customer.js"></script>
 
 </body>
 </html>
