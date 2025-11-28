@@ -1,17 +1,3 @@
-.order-pill-wrap {
-    text-align: center;
-    margin-top: 22px;
-    margin-bottom: 18px;
-}
-
-.order-wrapper {
-    width: 100%;
-    max-width: 1040px;
-    margin: 0px auto 24px auto;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
 .order-card {
     border-radius: 20px;
     padding: 18px 18px 22px 18px;

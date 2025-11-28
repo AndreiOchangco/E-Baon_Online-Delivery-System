@@ -12,7 +12,7 @@ $username = $_SESSION["username"] ?? "Admin";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>Dashboard | Admin</title>
     <link rel="shortcut icon" href="../images/e-baon-logo.png">
     <link rel="stylesheet" href="../Css/Admin.css">
 </head>
