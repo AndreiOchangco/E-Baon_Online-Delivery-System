@@ -55,8 +55,8 @@
 /* Logo inside sidebar */
 .admin-sidebar .admin-logo-box {
     display: block;
-    width: 125px;
-    height: 125px;
+    width: 130px;
+    height: 130px;
     margin: 16px auto;
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
 }
