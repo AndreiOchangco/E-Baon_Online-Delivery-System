@@ -69,11 +69,13 @@ unset($_SESSION["register_error"], $_SESSION["register_success"]);
 
     <div class="card">
         <form action="Register.php" method="POST">
+            <label class="auth-label" for="new_username">Username</label>
             <div class="field">
                 <span>🙎🏻‍♂️</span>
-                <input type="text" name="new_username" placeholder="add new username" required>
+                <input type="text" id="new_username" name="new_username" placeholder="add new username" required>
             </div>
 
+            <label class="auth-label" for="reg_password">Password</label>
             <div class="field password-field">
                 <span>🔒</span>
                 <input type="password" id="reg_password" name="new_password" placeholder="add new password" required>
@@ -82,16 +84,17 @@ unset($_SESSION["register_error"], $_SESSION["register_success"]);
                 </span>
             </div>
 
+            <label class="auth-label" for="roleSelect">Role</label>
             <div class="field">
                 <span>⚙️</span>
                 <select name="new_role" class="select-role" id="roleSelect" required>
-                    <option disabled selected>role</option>
+                    <option disabled selected>Select role</option>
                     <option value="customer">customer</option>
-                    <option value="delivery">delivery ID</option>
+                    <option value="delivery">delivery</option>
                 </select>
                 <i class="fa-solid fa-chevron-down select-arrow" id="roleArrow"></i>
             </div>
-
+            
             <button class="btn-login" type="submit">Register</button>
         </form>
 
