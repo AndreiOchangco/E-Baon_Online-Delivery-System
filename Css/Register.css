@@ -206,10 +206,12 @@ body {
 
 .auth-label {
     display: block;
+    width: 100%;
     text-align: left;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     color: #065f46;
-    margin-bottom: 5px;
-    margin-top: 10px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
 }
