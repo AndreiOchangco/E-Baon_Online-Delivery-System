@@ -79,6 +79,7 @@ $username = $_SESSION["username"] ?? "Admin";
 
         <!-- LOGOUT BUTTON -->
         <div class="admin-bottom-bar">
+            <a href="../../Main/Admin.php" class="admin-logout">Back to Dashboard</a>
             <a href="../../Main/Logout.php" class="admin-logout">LOGOUT</a>
         </div>
 
@@ -110,10 +111,6 @@ $username = $_SESSION["username"] ?? "Admin";
                     </table>
 
                 </div>
-            </div>
-
-            <div class="admin-bottom-bar">
-                <a href="../../Main/Admin.php" class="btn-login admin-logout">Back to Dashboard</a>
             </div>
         </main>
 
