@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "admin") {
-    header("Location: ../../Main/Index.php");
+    header("Location: Index.php");
     exit();
 }
 
@@ -12,57 +12,182 @@ $username = $_SESSION["username"] ?? "Admin";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Delivery D.</title>
-      <link rel="shortcut icon" href="../../images/e-baon-logo.png">
+    <title>Manage Order | Admin</title>
+    <link rel="shortcut icon" href="../../images/e-baon-logo.png">
     <link rel="stylesheet" href="../../Css/Admin.css">
     <link rel="stylesheet" href="../../Css/Admin_css/Admin_ManageDelivery.css">
 </head>
-<body class="admin-body">
-    
-<div class="admin-dashboard">
 
+<body class="admin-body">
     <header class="admin-head">
-        <div class="admin-logo-box">L</div>
         <div class="admin-head-text">
-            <h1>Omacha Shop</h1>
-            <p>admin</p>
+            <h3>E-Baon</h3>
+            <p>Admin</p>
         </div>
+
+        <!-- Sidebar Toggle -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
     </header>
 
-    <div class="admin-separator"></div>
+    <div class="admin-container">
 
-    <div class="delivery-pill-wrap">
-        <button class="admin-pill">🚚 Manage Delivery D.</button>
-    </div>
+        <!-- LEFT SIDEBAR -->
+        <aside class="admin-sidebar" id="sidebar">
+            <!-- Logo at top -->
+            <img class="admin-logo-box" src="../../images/e-baon-logo.png" alt="E-Baon Logo">
 
-    <div class="delivery-wrapper">
-        <div class="delivery-card">
+            <!-- MENU ITEMS -->
+            <nav class="admin-menu">
 
-            <div class="delivery-search-row">
-                <input type="text" placeholder="Search Delivery Driver">
-                <button class="delivery-search-btn">🔍</button>
-            </div>
+                <a href="../../Main/Admin.php"
+                class="admin-menu-item"
+                data-toolkit="Dashboard">
+                    <span class="admin-menu-item-icon">📊</span>
+                    <span class="admin-menu-item-text">Dashboard</span>
+                </a>
 
-            <table class="delivery-table">
-                <thead>
-                    <tr>
-                        <th style="width:80px;">ID</th>
-                        <th>Driver Name</th>
-                        <th style="width:160px;">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+                <a href="../../Body/Admin/Admin_ManageOrder.php"
+                class="admin-menu-item"
+                data-toolkit="Manage Order">
+                    <span class="admin-menu-item-icon">📋</span>
+                    <span class="admin-menu-item-text">Manage Order</span>
+                </a>
 
+                <a href="../../Body/Admin/Admin_ManageProduct.php"
+                class="admin-menu-item"
+                data-toolkit="Manage Product">
+                    <span class="admin-menu-item-icon">📦</span>
+                    <span class="admin-menu-item-text">Manage Product</span>
+                </a>
+
+                <a href="../../Body/Admin/Admin_ManageCustomer.php"
+                class="admin-menu-item"
+                data-toolkit="Manage Customer">
+                    <span class="admin-menu-item-icon">🙎🏻‍♂️</span>
+                    <span class="admin-menu-item-text">Manage Customer</span>
+                </a>
+
+                <a href="../../Body/Admin/Admin_ManageDelivery.php"
+                class="admin-menu-item"
+                data-toolkit="Manage Delivery">
+                    <span class="admin-menu-item-icon">🛵</span>
+                    <span class="admin-menu-item-text">Manage Delivery D.</span>
+                </a>
+
+                <a href="../../Body/Admin/Admin_ManageAdminAcc.php"
+                class="admin-menu-item"
+                data-toolkit="Manage Admin">
+                    <span class="admin-menu-item-icon">⚙️</span>
+                    <span class="admin-menu-item-text">Manage Admin Acc.</span>
+                </a>
+
+            </nav>
+
+        <!-- LOGOUT BUTTON -->
+        <div class="admin-bottom-bar">
+            <a href="../../Main/Admin.php" class="admin-logout">Back to Dashboard</a>
+            <a href="../../Main/Logout.php" class="admin-logout">LOGOUT</a>
         </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="admin-main-content">
+            <div class="delivery-wrapper">
+
+                <div class="admin-manage-title">
+                    <button class="admin-manage-btn">
+                        <span class="admin-manage-icon">🙎🏻‍♂️</span>
+                        <span>Manage Customer</span>
+                    </button>
+                </div>
+
+                <div class="delivery-card">
+
+                    <div class="delivery-search-row">
+                        <input type="text" placeholder="Search Delivery Driver">
+                        <button class="delivery-search-btn">🔍</button>
+                    </div>
+
+                    <table class="delivery-table">
+                        <thead>
+                            <tr>
+                                <th style="width:80px;">ID</th>
+                                <th>Driver Name</th>
+                                <th style="width:160px;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </main>
+        
     </div>
 
-    <div class="admin-bottom-bar">
-        <a href="../../Main/Admin.php" class="btn-login admin-logout">Back to Dashboard</a>
-    </div>
+<!-- SMART COLLAPSE SCRIPT -->
+<script>
+const sidebar = document.getElementById('sidebar');
+const MOBILE_BREAKPOINT = 768;
+let userForcedCollapse = false;
 
-</div>
+// Toggle sidebar manually
+function toggleSidebar() {
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+        sidebar.classList.toggle('show');
+        return;
+    }
+
+    const isCollapsed = sidebar.classList.contains('collapsed');
+
+    // Start transition: hide text/logo
+    sidebar.classList.add('transitioning');
+    sidebar.classList.remove('expanded-ready');
+
+    if (isCollapsed) {
+        // EXPANDING
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.add('transitioning'); // hide menu text only
+
+        // Restore text/logo after transition
+        setTimeout(() => {
+            sidebar.classList.remove('transitioning');
+        }, 300); // match CSS transition duration
+    } else {
+        // COLLAPSING
+        sidebar.classList.add('collapsed');
+        sidebar.classList.add('transitioning'); // hide menu text only
+
+        // End transition after animation
+        setTimeout(() => {
+            sidebar.classList.remove('transitioning');
+        }, 300);
+    }
+}
+
+// Close sidebar if clicking outside (mobile only)
+document.addEventListener('click', function(e) {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+    if (!sidebar.contains(e.target) && !e.target.classList.contains('sidebar-toggle')) {
+        sidebar.classList.remove('show');
+    }
+});
+
+// Prevent scrolling content behind sidebar when open
+const observer = new MutationObserver(() => {
+    if (sidebar.classList.contains('show')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+});
+observer.observe(sidebar, { attributes: true, attributeFilter: ['class'] });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../../Javascript/Chart.js"></script>
 
 </body>
 </html>
