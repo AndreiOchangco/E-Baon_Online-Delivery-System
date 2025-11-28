@@ -38,7 +38,7 @@ $username = $_SESSION["username"] ?? "Admin";
             <!-- MENU ITEMS -->
             <nav class="admin-menu">
 
-                <a href="../Body/Admin/Admin_Dashboard.php"
+                <a href="../Main/Admin.php"
                 class="admin-menu-item">
                     <span class="admin-menu-item-icon">📊</span>
                     <span class="admin-menu-item-text">Dashboard</span>
