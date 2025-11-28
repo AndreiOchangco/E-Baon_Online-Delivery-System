@@ -9,7 +9,7 @@ unset($_SESSION["login_error"]);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>E-Baon Login</title>
+    <title>Login | E-Baon</title>
     <link rel="shortcut icon" href="../images/e-baon-logo.png">
     <link rel="stylesheet" href="../Css/Index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

@@ -12,7 +12,7 @@ $username = $_SESSION["username"] ?? "Customer";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Customer Homepage</title>
+    <title>Homepage | E-Baon</title>
     <link rel="stylesheet" href="../Css/Customer.css">
 </head>
 <body class="customer-body">
@@ -39,7 +39,7 @@ $username = $_SESSION["username"] ?? "Customer";
 
     <div class="customer-promo-row">
         <div class="promo-banner-box">
-            <img src="../Image/customer/placeholder.jpg" class="promo-banner" alt="Promo banner">
+            <img src="../images/customer/placeholder.jpg" class="promo-banner" alt="Promo banner">
             <div class="promo-banner-text">Placeholder Text</div>
         </div>
     </div>
@@ -51,79 +51,79 @@ $username = $_SESSION["username"] ?? "Customer";
 
     <div class="customer-category-row">
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
         <button class="category-circle-btn">
-            <img src="../Image/customer/placeholder.jpg" class="category-circle-img" alt="">
+            <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
         </button>
     </div>
 
@@ -133,7 +133,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 1">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 1">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -144,7 +144,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 2">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 2">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -155,7 +155,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 3">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 3">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -166,7 +166,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 4">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 4">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -177,7 +177,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 5">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 5">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -188,7 +188,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 6">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 6">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -199,7 +199,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 7">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 7">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -210,7 +210,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 8">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 8">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -221,7 +221,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 9">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 9">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -232,7 +232,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 10">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 10">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -243,7 +243,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 11">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 11">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
@@ -254,7 +254,7 @@ $username = $_SESSION["username"] ?? "Customer";
             <div class="shop-name">Name of the Shop</div>
             <div class="shop-card">
                 <div class="shop-picture">
-                    <img src="../Image/customer/placeholder.jpg" class="shop-img" alt="Product 12">
+                    <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 12">
                 </div>
                 <div class="shop-info">Name of the product / price</div>
                 <button class="shop-add-btn">Add</button>
