@@ -77,6 +77,12 @@
     overflow-y: auto;
 }
 
+/* Disable all sidebar transitions during page load */
+.admin-sidebar.no-anim,
+.admin-sidebar.no-anim * {
+    transition: none !important;
+}
+
 /* Collapsed mode */
 .admin-sidebar.collapsed {
     width: 115px;
