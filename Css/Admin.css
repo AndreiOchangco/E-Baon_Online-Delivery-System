@@ -77,6 +77,23 @@
     overflow-y: auto;
 }
 
+.admin-sidebar::-webkit-scrollbar {
+    width: 12px; 
+}
+
+/* Scrollbar thumb */
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background-color: #064e3b;
+    border-radius: 6px; 
+    border: 3px solid #f0fdf4; 
+}
+
+/* Scrollbar track background */
+.admin-sidebar::-webkit-scrollbar-track {
+    background: #f0fdf4; 
+    border-radius: 6px;
+}
+
 /* Collapsed mode */
 .admin-sidebar.collapsed {
     width: 115px;
