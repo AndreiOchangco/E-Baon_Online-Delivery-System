@@ -1,0 +1,30 @@
+/* Disable text selection across all browsers */
+.noselect {
+    user-select: none;
+    -webkit-user-select: none;  /* Chrome, Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE/Edge Legacy */
+}
+
+/* Disable dragging of images/icons */
+.nodrag {
+    -webkit-user-drag: none; /* Chrome, Safari */
+    -khtml-user-drag: none;  /* Old Konqueror */
+    -moz-user-drag: none;    /* Old Firefox (non-standard) */
+    -o-user-drag: none;      /* Old Opera */
+    user-drag: none;
+    pointer-events: none;    /* Prevent accidental dragging */
+}
+
+/* Combine: no-select + no-drag in one class */
+.nointeract {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    -webkit-user-drag: none;
+    user-drag: none;
+
+    pointer-events: none;
+}

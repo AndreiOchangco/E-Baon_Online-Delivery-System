@@ -15,6 +15,7 @@ $username = $_SESSION["username"] ?? "Admin";
     <title>Manage Order | Admin</title>
     <link rel="shortcut icon" href="../../images/e-baon-logo.png">
     <link rel="stylesheet" href="../../Css/Admin.css">
+    <link rel="stylesheet" href="../Css/DisableStyles.css">
     <link rel="stylesheet" href="../../Css/Admin_css/Admin_ManageDelivery.css">
 </head>
 

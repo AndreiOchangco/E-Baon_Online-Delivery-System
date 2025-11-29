@@ -15,6 +15,7 @@ $username = $_SESSION["username"] ?? "Admin";
     <title>Dashboard | Admin</title>
     <link rel="shortcut icon" href="../images/e-baon-logo.png">
     <link rel="stylesheet" href="../Css/Admin.css">
+    <link rel="stylesheet" href="../Css/DisableStyles.css">
 </head>
 
 <body class="admin-body">
