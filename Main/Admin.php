@@ -18,25 +18,25 @@ $username = $_SESSION["username"] ?? "Admin";
 </head>
 
 <body class="admin-body">
-    <header class="admin-head">
-        <div class="admin-head-text">
+    <header class="admin-head noselect">
+        <div class="admin-head-text noselect">
             <h3>E-Baon</h3>
             <p>Admin</p>
         </div>
 
         <!-- Sidebar Toggle -->
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <button class="sidebar-toggle noselect" onclick="toggleSidebar()">☰</button>
     </header>
 
     <div class="admin-container">
 
         <!-- LEFT SIDEBAR -->
-        <aside class="admin-sidebar" id="sidebar">
+        <aside class="admin-sidebar noselect" id="sidebar">
             <!-- Logo at top -->
-            <img class="admin-logo-box" src="../images/e-baon-logo.png" alt="E-Baon Logo">
+            <img class="admin-logo-box noselect" src="../images/e-baon-logo.png" alt="E-Baon Logo">
 
             <!-- MENU ITEMS -->
-            <nav class="admin-menu">
+            <nav class="admin-menu noselect">
 
                 <a href="../Main/Admin.php"
                 class="admin-menu-item"
