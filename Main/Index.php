@@ -15,7 +15,7 @@ unset($_SESSION["login_error"]);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<div class="background">
+
 <div class="auth-container">
     <img class="logo-img" src="../images/e-baon-logo.png" alt="">
 
@@ -62,6 +62,6 @@ unset($_SESSION["login_error"]);
     var phpLoginError = "<?php echo htmlspecialchars($login_error, ENT_QUOTES, 'UTF-8'); ?>";
 </script>
 <script src="../Javascript/Index.js"></script>
-</div>
+
 </body>
 </html>
