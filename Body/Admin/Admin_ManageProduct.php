@@ -120,64 +120,85 @@ $username = $_SESSION["username"] ?? "Admin";
 
     </div>
 
-<!-- SMART COLLAPSE SCRIPT -->
+<!-- SMART COLLAPSE SCRIPT WITH LOCAL STORAGE -->
 <script>
 const sidebar = document.getElementById('sidebar');
 const MOBILE_BREAKPOINT = 768;
-let userForcedCollapse = false;
 
-// Toggle sidebar manually
+/* 1. Disable ALL sidebar animations during initial load */
+sidebar.classList.add("no-anim");
+
+/* 2. Apply saved state BEFORE anything renders */
+const savedState = localStorage.getItem("adminSidebarState");
+if (savedState === "collapsed") {
+    sidebar.classList.add("collapsed");
+} else {
+    sidebar.classList.remove("collapsed");
+}
+
+/* 3. Enable animations after load and after the logo finishes layout */
+window.addEventListener("load", () => {
+    // Give browser a moment to finalize layout to stop flicker
+    setTimeout(() => {
+        sidebar.classList.remove("no-anim");
+        sidebar.classList.add("expanded-ready");
+    }, 120);
+});
+
+/* SIDEBAR TOGGLE FUNCTION */
 function toggleSidebar() {
     if (window.innerWidth < MOBILE_BREAKPOINT) {
-        sidebar.classList.toggle('show');
+        sidebar.classList.toggle("show");
         return;
     }
 
-    const isCollapsed = sidebar.classList.contains('collapsed');
+    const isCollapsed = sidebar.classList.contains("collapsed");
 
-    // Start transition: hide text/logo
-    sidebar.classList.add('transitioning');
-    sidebar.classList.remove('expanded-ready');
+    sidebar.classList.add("transitioning");
+    sidebar.classList.remove("expanded-ready");
 
     if (isCollapsed) {
-        // EXPANDING
-        sidebar.classList.remove('collapsed');
-        sidebar.classList.add('transitioning'); // hide menu text only
+        /* EXPANDING */
+        sidebar.classList.remove("collapsed");
 
-        // Restore text/logo after transition
         setTimeout(() => {
-            sidebar.classList.remove('transitioning');
-        }, 300); // match CSS transition duration
-    } else {
-        // COLLAPSING
-        sidebar.classList.add('collapsed');
-        sidebar.classList.add('transitioning'); // hide menu text only
-
-        // End transition after animation
-        setTimeout(() => {
-            sidebar.classList.remove('transitioning');
+            sidebar.classList.remove("transitioning");
+            sidebar.classList.add("expanded-ready");
         }, 300);
+
+        localStorage.setItem("adminSidebarState", "expanded");
+
+    } else {
+        /* COLLAPSING */
+        sidebar.classList.add("collapsed");
+
+        setTimeout(() => {
+            sidebar.classList.remove("transitioning");
+        }, 300);
+
+        localStorage.setItem("adminSidebarState", "collapsed");
     }
 }
 
-// Close sidebar if clicking outside (mobile only)
-document.addEventListener('click', function(e) {
+/* CLOSE SIDEBAR ON MOBILE CLICK OUTSIDE */
+document.addEventListener("click", function(e) {
     if (window.innerWidth >= MOBILE_BREAKPOINT) return;
-    if (!sidebar.contains(e.target) && !e.target.classList.contains('sidebar-toggle')) {
-        sidebar.classList.remove('show');
+    if (!sidebar.contains(e.target) && !e.target.classList.contains("sidebar-toggle")) {
+        sidebar.classList.remove("show");
     }
 });
 
-// Prevent scrolling content behind sidebar when open
+/* PREVENT BACKGROUND SCROLL WHEN MOBILE SIDEBAR IS OPEN */
 const observer = new MutationObserver(() => {
-    if (sidebar.classList.contains('show')) {
-        document.body.style.overflow = 'hidden';
+    if (sidebar.classList.contains("show")) {
+        document.body.style.overflow = "hidden";
     } else {
-        document.body.style.overflow = '';
+        document.body.style.overflow = "";
     }
 });
-observer.observe(sidebar, { attributes: true, attributeFilter: ['class'] });
+observer.observe(sidebar, { attributes: true, attributeFilter: ["class"] });
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../../Javascript/Chart.js"></script>
 
