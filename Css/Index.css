@@ -6,13 +6,46 @@
 }
 
 body {
-    background: linear-gradient(135deg, #dcfce7, #fefce8);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    position: fixed;   /* stay behind content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;  /* hide overflow from blur effect */
+    z-index: -1;       /* behind login card */
+}
+
+/* Use a pseudo-element for blur */
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/background_delivery.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px);   /* adjust blur amount */
+    transform: scale(1.05); /* prevent edges from showing */
+    z-index: -1;
+}
+
 
 .auth-container {
     display: flex;
