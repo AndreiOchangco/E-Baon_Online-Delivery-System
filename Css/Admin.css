@@ -140,6 +140,7 @@
     background: #bbf7d0;
     transform: translateX(5px) scale(1.03);
     box-shadow: 0px 8px 16px rgba(22, 163, 74, 0.3);
+    transform: scale(0.95);
 }
 
 .admin-menu-item-icon {
