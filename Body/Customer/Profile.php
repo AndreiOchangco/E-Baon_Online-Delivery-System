@@ -18,6 +18,11 @@ mysqli_stmt_execute($stmtUser);
 mysqli_stmt_bind_result($stmtUser, $dbUsername, $dbAge, $dbSex);
 mysqli_stmt_fetch($stmtUser);
 mysqli_stmt_close($stmtUser);
+
+// Set defaults if no user found
+$dbUsername = $dbUsername ?? "Customer";
+$dbAge = $dbAge ?? "N/A";
+$dbSex = $dbSex ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -137,12 +142,12 @@ mysqli_stmt_close($stmtUser);
         <div class="profile-order-card">
             <div class="profile-order-header">
                 <img src="../../images/customer/placeholder.jpg" class="profile-shop-icon" alt="Shop">
-                <div class="profile-shop-address"><?php echo htmlspecialchars($shopName); ?></div>
+                <div class="profile-shop-address"><?php echo htmlspecialchars($shopName ?? 'Unknown Shop'); ?></div>
             </div>
             <div class="profile-order-lines">
                 <div class="profile-order-line">
-                    <span><?php echo htmlspecialchars($productName); ?></span>
-                    <span>₱<?php echo number_format($orderPrice, 2); ?></span>
+                    <span><?php echo htmlspecialchars($productName ?? 'Unknown Product'); ?></span>
+                    <span>₱<?php echo number_format($orderPrice ?? 0); ?></span>
                 </div>
             </div>
             <div class="profile-order-footer">

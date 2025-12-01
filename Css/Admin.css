@@ -52,13 +52,10 @@
     padding: 8px;
 }
 
-/* Logo inside sidebar */
-.admin-sidebar .admin-logo-box {
-    display: block;
-    width: 130px;
-    height: 130px;
-    margin: 16px auto;
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+/* Disable all sidebar transitions during page load */
+.admin-sidebar.no-anim,
+.admin-sidebar.no-anim * {
+    transition: none !important;
 }
 
 /* LEFT SIDEBAR BASE */
@@ -202,14 +199,14 @@
     font-size: 12px;
     opacity: 0;
     transform: translateX(-10px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: all 0.2s ease-in-out;
     pointer-events: none;
     z-index: 9999;
 }
 
 .admin-sidebar.collapsed .admin-menu-item:hover::after {
     opacity: 1;
-    transform: translateX(5px);
+    transform: translateX(0);
 }
 
 /* Sidebar Header */
