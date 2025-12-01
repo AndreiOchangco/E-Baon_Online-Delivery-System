@@ -30,6 +30,7 @@ $dbSex = $dbSex ?? 0;
 <head>
     <meta charset="UTF-8">
     <title>Customer Profile</title>
+    <link rel="shortcut icon" href="../../images/e-baon-logo.png">
     <link rel="stylesheet" href="../../Css/Customer_css/Profile.css">
     <link rel="stylesheet" href="../../Css/DisableStyles.css">
     <link rel="stylesheet" href="../../Css/CustomerSidebar.css">

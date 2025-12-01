@@ -15,6 +15,7 @@ $username = $_SESSION["username"] ?? "Customer";
 <head>
     <meta charset="UTF-8">
     <title>Home | E-Baon</title>
+    <link rel="shortcut icon" href="../images/e-baon-logo.png">
     <link rel="stylesheet" href="../Css/Customer.css">
     <link rel="stylesheet" href="../Css/DisableStyles.css">
     <link rel="stylesheet" href="../Css/CustomerSidebar.css">
