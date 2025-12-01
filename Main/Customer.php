@@ -54,41 +54,6 @@ $username = $_SESSION["username"] ?? "Customer";
                     <span class="admin-menu-item-text">Dashboard</span>
                 </a>
 
-                <a href="../Body/Admin/Admin_ManageOrder.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Order">
-                    <span class="admin-menu-item-icon">📋</span>
-                    <span class="admin-menu-item-text">Manage Order</span>
-                </a>
-
-                <a href="../Body/Admin/Admin_ManageProduct.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Product">
-                    <span class="admin-menu-item-icon">📦</span>
-                    <span class="admin-menu-item-text">Manage Product</span>
-                </a>
-
-                <a href="../Body/Admin/Admin_ManageCustomer.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Customer">
-                    <span class="admin-menu-item-icon">🙎🏻‍♂️</span>
-                    <span class="admin-menu-item-text">Manage Customer</span>
-                </a>
-
-                <a href="../Body/Admin/Admin_ManageDelivery.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Delivery">
-                    <span class="admin-menu-item-icon">🛵</span>
-                    <span class="admin-menu-item-text">Manage Delivery D.</span>
-                </a>
-
-                <a href="../Body/Admin/Admin_ManageAdminAcc.php"
-                class="admin-menu-item"
-                data-tooltip="Manage Admin">
-                    <span class="admin-menu-item-icon">⚙️</span>
-                    <span class="admin-menu-item-text">Manage Admin Acc.</span>
-                </a>
-
             </nav>
 
         <!-- LOGOUT BUTTON -->

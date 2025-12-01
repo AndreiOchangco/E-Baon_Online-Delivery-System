@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2025 at 11:50 AM
+-- Generation Time: Dec 01, 2025 at 05:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,6 +68,18 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shops`
+--
+
+CREATE TABLE `shops` (
+  `shopID` int(25) NOT NULL,
+  `shopName` varchar(25) NOT NULL,
+  `shopImage` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -75,7 +87,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `user_age` int(11) NOT NULL,
-  `user_sex` int(11) NOT NULL,
+  `user_sex` text NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` enum('admin','customer','delivery','') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -86,11 +98,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `user_age`, `user_sex`, `password`, `role`, `created_at`) VALUES
-(1, 'ardy', 0, 0, 'Password Admin', 'admin', '2025-11-19 11:59:03'),
-(2, 'brent', 0, 0, 'Password Customer', 'customer', '2025-11-19 11:59:03'),
-(3, 'lester', 0, 0, 'Password Delivery', 'delivery', '2025-11-19 11:59:03'),
-(20, 'ReinFhaul', 0, 0, '12345', 'customer', '2025-11-24 14:34:08'),
-(21, 'admin', 0, 0, 'admin', 'admin', '2025-11-24 14:42:39');
+(1, 'ardy', 0, '0', 'Password Admin', 'admin', '2025-11-19 11:59:03'),
+(2, 'brent', 0, '0', 'Password Customer', 'customer', '2025-11-19 11:59:03'),
+(3, 'lester', 0, '0', 'Password Delivery', 'delivery', '2025-11-19 11:59:03'),
+(20, 'ReinFhaul', 21, '0', '12345', 'customer', '2025-11-24 14:34:08'),
+(21, 'admin', 0, '0', 'admin', 'admin', '2025-11-24 14:42:39');
 
 --
 -- Indexes for dumped tables
@@ -117,6 +129,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`productID`);
+
+--
+-- Indexes for table `shops`
+--
+ALTER TABLE `shops`
+  ADD PRIMARY KEY (`shopID`);
 
 --
 -- Indexes for table `users`
@@ -146,6 +164,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   MODIFY `productID` int(25) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shops`
+--
+ALTER TABLE `shops`
+  MODIFY `shopID` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
