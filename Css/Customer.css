@@ -247,20 +247,86 @@
     cursor: pointer;
 }
 
+/* Footer always top */
 .customer-bottom-nav {
-    width: 100%;
-    padding: 12px 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, #033024, #064e3b 45%, #0e5f4a 100%);
-    box-shadow: 0px -14px 30px rgba(6, 95, 70, 0.45);
-    min-height: 75px;
     position: fixed;
     bottom: 0;
     left: 0;
-    right: 0;
-    z-index: 900;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1500; /* highest */
+}
+
+/* Collapsed sidebar below footer */
+.admin-sidebar.collapsed {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 70px;
+    height: calc(100vh - 64px);
+    z-index: 1200; /* below footer */
+}
+
+/* Expanded modal sidebar above backdrop but below footer */
+.admin-sidebar.expanded-modal {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 64px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.35);
+    z-index: 1400; /* below footer 1500 */
+}
+
+/* Backdrop always under sidebar */
+.sidebar-backdrop {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 64px);
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 1300; /* below expanded sidebar but above collapsed sidebar */
+}
+
+.sidebar-backdrop.show {
+    display: block;
+}
+
+/* when the modal sidebar is open it should sit above backdrop but below footer if you prefer footer always visible: */
+.admin-sidebar.expanded-modal {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 64px);
+    z-index: 1100;              /* above backdrop but below footer */
+    transform: translateX(0);
+}
+
+/* ensure collapsed aside remains on the left and below footer z index (so footer still visible) */
+.admin-sidebar.collapsed {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 115px;
+    z-index: 1050;
+}
+
+/* small safety for mobile: footer should always be on top */
+@media (max-width: 768px) {
+    .customer-bottom-nav {
+        z-index: 1300;
+    }
+    .sidebar-backdrop {
+        top: 64px;
+    }
 }
 
 .bottom-icon {
@@ -322,4 +388,49 @@
     font-size: 13px;
     border-radius: 999px;
     cursor: pointer;
+}
+
+
+
+
+
+/* Fixed collapsed sidebar */
+/* Initially hide sidebar to prevent flash */
+.admin-sidebar {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, width 0.25s ease;
+}
+
+/* Once JS applies correct state */
+.admin-sidebar.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Expanded is modal drawer */
+.admin-sidebar.expanded-modal {
+    width: 250px; /* modal width */
+    left: 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35);
+}
+
+/* Backdrop overlay */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 998; /* behind sidebar modal */
+}
+
+/* Active backdrop */
+.sidebar-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
 }
