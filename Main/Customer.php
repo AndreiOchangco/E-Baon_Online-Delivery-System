@@ -12,7 +12,7 @@ $username = $_SESSION["username"] ?? "Customer";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homepage | E-Baon</title>
+    <title>Home | E-Baon</title>
     <link rel="stylesheet" href="../Css/Customer.css">
 </head>
 <body class="customer-body">
