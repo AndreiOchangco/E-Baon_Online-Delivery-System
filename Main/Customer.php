@@ -37,32 +37,31 @@ $username = $_SESSION["username"] ?? "Customer";
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
+<!-- LEFT SIDEBAR -->
+<aside class="admin-sidebar noselect" id="sidebar">
+    <!-- Logo at top -->
+    <img class="admin-logo-box noselect" src="../images/e-baon-logo.png" alt="E-Baon Logo">
+
+    <!-- MENU ITEMS -->
+    <nav class="admin-menu noselect">
+
+        <a href="../Main/Admin.php"
+        class="admin-menu-item"
+        data-tooltip="Dashboard">
+            <span class="admin-menu-item-icon">🏠</span>
+            <span class="admin-menu-item-text">Dashboard</span>
+        </a>
+
+    </nav>
+
+<!-- LOGOUT BUTTON -->
+<div class="admin-bottom-bar">
+    <a href="Logout.php" class="admin-logout">LOGOUT</a>
+</div>
+
+</aside>
+
 <div style="top: 30px; margin-top: -30px; margin-bottom: -100px;" class="admin-container">
-
-        <!-- LEFT SIDEBAR -->
-        <aside class="admin-sidebar noselect" id="sidebar">
-            <!-- Logo at top -->
-            <img class="admin-logo-box noselect" src="../images/e-baon-logo.png" alt="E-Baon Logo">
-
-            <!-- MENU ITEMS -->
-            <nav class="admin-menu noselect">
-
-                <a href="../Main/Admin.php"
-                class="admin-menu-item"
-                data-tooltip="Dashboard">
-                    <span class="admin-menu-item-icon">📊</span>
-                    <span class="admin-menu-item-text">Dashboard</span>
-                </a>
-
-            </nav>
-
-        <!-- LOGOUT BUTTON -->
-        <div class="admin-bottom-bar">
-            <a href="Logout.php" class="admin-logout">LOGOUT</a>
-        </div>
-
-        </aside>
-
 
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">

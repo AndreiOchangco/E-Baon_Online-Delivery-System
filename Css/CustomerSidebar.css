@@ -245,7 +245,7 @@
 
 /* Right Side Content */
 .admin-main-content {
-    margin-left: 260px; /* default sidebar width */
+    margin-left: 130px; /* default sidebar width */
     padding: 32px;
     padding-top: 32px;
     height: calc(100vh - 64px);
@@ -255,7 +255,7 @@
 
 /* Adjust when sidebar is collapsed */
 .admin-sidebar.collapsed ~ .admin-main-content {
-    margin-left: 115px;
+    margin-left: 90px;
 }
 
 /* Adjust for header */
@@ -273,7 +273,7 @@
 
 .admin-logout {
     padding: 12px 18px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     border-radius: 14px;
     background-image: linear-gradient(135deg, #f97316, #ea580c);
     background-color: #ea580c; 

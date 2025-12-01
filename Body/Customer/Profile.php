@@ -37,12 +37,13 @@ $dbSex = $dbSex ?? 0;
 </head>
 <body class="profile-body">
 
-<header class="customer-head noselect">
-    <div class="customer-head-text noselect">
+<header class="admin-head noselect">
+    <div class="admin-head-text noselect">
         <h3>E-Baon</h3>
-        <p>Customer</p>
+        <p>Admin</p>
     </div>
 
+    <!-- Sidebar Toggle -->
     <button class="sidebar-toggle noselect" onclick="toggleSidebar()">☰</button>
     <div class="customer-head-search">
         <span class="customer-search-icon">🔍</span>
@@ -63,7 +64,7 @@ $dbSex = $dbSex ?? 0;
         <a href="../Main/Admin.php"
         class="admin-menu-item"
         data-tooltip="Dashboard">
-            <span class="admin-menu-item-icon">📊</span>
+            <span class="admin-menu-item-icon">🏠</span>
             <span class="admin-menu-item-text">Dashboard</span>
         </a>
 
