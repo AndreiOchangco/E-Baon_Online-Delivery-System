@@ -1,11 +1,13 @@
 <?php 
 session_start();
+include '../Connection/connection.php'; // Adjust path
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
-    header("Location: Index.php");
+    header("Location: ../../Main/Index.php");
     exit();
 }
 
+$userID = $_SESSION["user_id"];
 $username = $_SESSION["username"] ?? "Customer";
 ?>
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ $username = $_SESSION["username"] ?? "Customer";
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-<div class="admin-container">
+<div style="top: 30px; margin-top: -30px; margin-bottom: -100px;" class="admin-container">
 
         <!-- LEFT SIDEBAR -->
         <aside class="admin-sidebar noselect" id="sidebar">
@@ -100,11 +102,11 @@ $username = $_SESSION["username"] ?? "Customer";
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
             <div class="customer-promo-row">
-            <div class="promo-banner-box">
-                <img src="../images/customer/placeholder.jpg" class="promo-banner" alt="Promo banner">
-                <div class="promo-banner-text">Placeholder Text</div>
+                <div class="promo-banner-box">
+                    <img src="../images/customer/placeholder.jpg" class="promo-banner" alt="Promo banner">
+                    <div class="promo-banner-text">Placeholder Text</div>
+                </div>
             </div>
-        </div>
 
         <div class="customer-category-header">
             <span class="customer-category-label">Category</span>

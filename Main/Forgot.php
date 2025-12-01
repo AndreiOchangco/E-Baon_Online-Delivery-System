@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../Connection/Connection.php";
+require "../Connection/connection.php"; // mysqli connection
 
 $forgot_error = $_SESSION["forgot_error"] ?? "";
 $forgot_success = $_SESSION["forgot_success"] ?? "";
@@ -16,35 +16,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    try {
-        $check_sql = "SELECT id FROM users WHERE username = :username LIMIT 1";
-        $check_stmt = $conn->prepare($check_sql);
-        $check_stmt->bindParam(":username", $username);
-        $check_stmt->execute();
-        $user = $check_stmt->fetch(PDO::FETCH_ASSOC);
+    // Check if username exists
+    $check_sql = "SELECT id FROM users WHERE username = ? LIMIT 1";
+    $stmt_check = mysqli_prepare($conn, $check_sql);
+    mysqli_stmt_bind_param($stmt_check, "s", $username);
+    mysqli_stmt_execute($stmt_check);
+    mysqli_stmt_store_result($stmt_check);
 
-        if (!$user) {
-            $_SESSION["forgot_error"] = "No username found.";
-            header("Location: Forgot.php");
-            exit();
-        }
-
-        $update_sql = "UPDATE users SET password = :password WHERE username = :username";
-        $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bindParam(":password", $new_password);
-        $update_stmt->bindParam(":username", $username);
-        $update_stmt->execute();
-
-        $_SESSION["forgot_success"] = "Password has been updated.";
-        header("Location: Forgot.php");
-        exit();
-    } catch (PDOException $e) {
-        $_SESSION["forgot_error"] = "Database error.";
+    if (mysqli_stmt_num_rows($stmt_check) === 0) {
+        $_SESSION["forgot_error"] = "No username found.";
+        mysqli_stmt_close($stmt_check);
         header("Location: Forgot.php");
         exit();
     }
+    mysqli_stmt_close($stmt_check);
+
+    // Update password
+    $update_sql = "UPDATE users SET password = ? WHERE username = ?";
+    $stmt_update = mysqli_prepare($conn, $update_sql);
+    mysqli_stmt_bind_param($stmt_update, "ss", $new_password, $username);
+
+    if (mysqli_stmt_execute($stmt_update)) {
+        $_SESSION["forgot_success"] = "Password has been updated.";
+    } else {
+        $_SESSION["forgot_error"] = "Database error: " . mysqli_error($conn);
+    }
+    mysqli_stmt_close($stmt_update);
+    header("Location: Forgot.php");
+    exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -4,12 +4,11 @@ $dbname = "e_baon";
 $username = "root";
 $password = "";
 
-try {
-    $conn = new PDO("mysql:host=$host; dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo "Connection failed: " . $e->getMessage();
-    exit();
+// Create mysqli connection
+$conn = new mysqli($host, $username, "", $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>

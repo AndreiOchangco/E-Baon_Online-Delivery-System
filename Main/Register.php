@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../Connection/Connection.php";
+require "../Connection/connection.php"; // mysqli connection
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $new_username = trim($_POST["new_username"] ?? "");
@@ -20,30 +20,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    try {
-        $check_sql  = "SELECT id FROM users WHERE username = :username LIMIT 1";
-        $check_stmt = $conn->prepare($check_sql);
-        $check_stmt->bindParam(":username", $new_username);
-        $check_stmt->execute();
+    // Check if username exists
+    $check_sql  = "SELECT id FROM users WHERE username = ? LIMIT 1";
+    $stmt_check = mysqli_prepare($conn, $check_sql);
+    mysqli_stmt_bind_param($stmt_check, "s", $new_username);
+    mysqli_stmt_execute($stmt_check);
+    mysqli_stmt_store_result($stmt_check);
 
-        if ($check_stmt->fetch(PDO::FETCH_ASSOC)) {
-            $_SESSION["register_error"] = "Username already exists.";
-            header("Location: Register.php");
-            exit();
-        }
+    if (mysqli_stmt_num_rows($stmt_check) > 0) {
+        $_SESSION["register_error"] = "Username already exists.";
+        mysqli_stmt_close($stmt_check);
+        header("Location: Register.php");
+        exit();
+    }
+    mysqli_stmt_close($stmt_check);
 
-        $insert_sql  = "INSERT INTO users (username, password, role) VALUES (:username, :password, :role)";
-        $insert_stmt = $conn->prepare($insert_sql);
-        $insert_stmt->bindParam(":username", $new_username);
-        $insert_stmt->bindParam(":password", $new_password);
-        $insert_stmt->bindParam(":role", $new_role);
-        $insert_stmt->execute();
+    // Insert new user
+    $insert_sql  = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+    $stmt_insert = mysqli_prepare($conn, $insert_sql);
+    mysqli_stmt_bind_param($stmt_insert, "sss", $new_username, $new_password, $new_role);
 
+    if (mysqli_stmt_execute($stmt_insert)) {
         $_SESSION["register_success"] = "Your account has been registered!";
+        mysqli_stmt_close($stmt_insert);
         header("Location: Index.php");
         exit();
-    } catch (PDOException $e) {
-        $_SESSION["register_error"] = "Database error.";
+    } else {
+        $_SESSION["register_error"] = "Database error: " . mysqli_error($conn);
+        mysqli_stmt_close($stmt_insert);
         header("Location: Register.php");
         exit();
     }
@@ -53,6 +57,7 @@ $reg_error   = $_SESSION["register_error"] ?? "";
 $reg_success = $_SESSION["register_success"] ?? "";
 unset($_SESSION["register_error"], $_SESSION["register_success"]);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../Connection/Connection.php";
+require "../Connection/connection.php"; // Make sure this is mysqli connection
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: Index.php");
@@ -16,22 +16,26 @@ if ($username === "" || $password === "") {
     exit();
 }
 
-$sql = "SELECT * FROM users WHERE username = :username LIMIT 1";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(":username", $username);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+// Prepare and execute mysqli statement
+$sql = "SELECT id, username, password, role FROM users WHERE username = ? LIMIT 1";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $id, $dbUsername, $dbPassword, $role);
+mysqli_stmt_fetch($stmt);
+mysqli_stmt_close($stmt);
 
-if ($user && $user["password"] === $password) {
-    $_SESSION["user_id"] = $user["id"];
-    $_SESSION["username"] = $user["username"];
-    $_SESSION["role"] = $user["role"];
+// Check credentials
+if ($dbUsername && $dbPassword === $password) {
+    $_SESSION["user_id"] = $id;
+    $_SESSION["username"] = $dbUsername;
+    $_SESSION["role"] = $role;
 
-    if ($user["role"] === "admin") {
+    if ($role === "admin") {
         header("Location: Admin.php");
-    } elseif ($user["role"] === "customer") {
+    } elseif ($role === "customer") {
         header("Location: Customer.php");
-    } elseif ($user["role"] === "delivery") {
+    } elseif ($role === "delivery") {
         header("Location: Delivery_D.php");
     } else {
         $_SESSION["login_error"] = "Unknown role for this account.";
@@ -43,3 +47,4 @@ if ($user && $user["password"] === $password) {
     header("Location: Index.php");
     exit();
 }
+?>
