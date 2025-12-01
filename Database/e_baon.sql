@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2025 at 03:54 PM
+-- Generation Time: Dec 01, 2025 at 11:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `archives` (
   `archiveID` int(11) NOT NULL,
   `orderID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL
+  `userID` int(11) NOT NULL,
+  `orderName` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,6 +58,7 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `products` (
   `productID` int(25) NOT NULL,
+  `product_image` varchar(25) NOT NULL,
   `shopName` varchar(25) NOT NULL,
   `productName` varchar(255) NOT NULL,
   `productPrice` int(25) NOT NULL,
@@ -72,6 +74,8 @@ CREATE TABLE `products` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
+  `user_age` int(11) NOT NULL,
+  `user_sex` int(11) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` enum('admin','customer','delivery','') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -81,12 +85,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
-(1, 'ardy', 'Password Admin', 'admin', '2025-11-19 11:59:03'),
-(2, 'brent', 'Password Customer', 'customer', '2025-11-19 11:59:03'),
-(3, 'lester', 'Password Delivery', 'delivery', '2025-11-19 11:59:03'),
-(20, 'ReinFhaul', '12345', 'customer', '2025-11-24 14:34:08'),
-(21, 'admin', 'admin', 'admin', '2025-11-24 14:42:39');
+INSERT INTO `users` (`id`, `username`, `user_age`, `user_sex`, `password`, `role`, `created_at`) VALUES
+(1, 'ardy', 0, 0, 'Password Admin', 'admin', '2025-11-19 11:59:03'),
+(2, 'brent', 0, 0, 'Password Customer', 'customer', '2025-11-19 11:59:03'),
+(3, 'lester', 0, 0, 'Password Delivery', 'delivery', '2025-11-19 11:59:03'),
+(20, 'ReinFhaul', 0, 0, '12345', 'customer', '2025-11-24 14:34:08'),
+(21, 'admin', 0, 0, 'admin', 'admin', '2025-11-24 14:42:39');
 
 --
 -- Indexes for dumped tables
