@@ -62,7 +62,7 @@ $username = $_SESSION["username"] ?? "Customer";
 
 </aside>
 
-<div style="top: 30px; margin-top: -30px; margin-bottom: -100px;" class="admin-container">
+<div style="top: 30px; margin-top: -30px; margin-bottom: -150px;" class="admin-container">
 
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
@@ -91,7 +91,7 @@ $username = $_SESSION["username"] ?? "Customer";
         </button>
 
         <button class="category-circle-btn" data-category="mcdonalds">
-            <img src="../images/Shop-Logos/mcdonalds.png" class="category-circle-img">
+            <img src="../images/Shop-Logos/mcdo.png" class="category-circle-img">
             <span class="category-label">McDonald's</span>
         </button>
 

@@ -12,7 +12,7 @@ $username = $_SESSION["username"] ?? "Admin";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Order | Admin</title>
+    <title>Manage Pending Order | Admin</title>
     <link rel="shortcut icon" href="../../images/e-baon-logo.png">
     <link rel="stylesheet" href="../../Css/Admin.css">
     <link rel="stylesheet" href="../Css/DisableStyles.css">
@@ -101,7 +101,7 @@ $username = $_SESSION["username"] ?? "Admin";
                     <div class="admin-manage-title">
                         <button class="admin-manage-btn">
                             <span class="admin-manage-icon">🙎🏻‍♂️</span>
-                            <span>Manage Customer</span>
+                            <span>Manage Pending Order</span>
                         </button>
                     </div>
 
@@ -119,7 +119,7 @@ $username = $_SESSION["username"] ?? "Admin";
                         <div class="admin-details-card">
 
                             <div class="admin-main-field">
-                                <div class="admin-main-pill">CUSTOMER DETAILS</div>
+                                <div class="admin-main-pill">CUSTOMERS' ORDER DETAILS</div>
                             </div>
 
                             <div class="admin-details-grid">
