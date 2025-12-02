@@ -115,133 +115,133 @@ $username = $_SESSION["username"] ?? "Customer";
         <section class="customer-shop-row">
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="jollibee" data-category="jollibee">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 1">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="mcdonalds" data-category="mcdonalds">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 2">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="kfc" data-category="kfc">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 3">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="burger-king" data-category="burger-king">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 4">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="starbucks" data-category="starbucks">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 5">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="jollibee" data-category="jollibee">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 6">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="mcdonalds" data-category="mcdonalds">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 7">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="kfc" data-category="kfc">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 8">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="burger-king" data-category="burger-king">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 9">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="starbucks" data-category="starbucks">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 10">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="jollibee" data-category="jollibee">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 11">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
 
             <div class="shop-column">
-                <div class="shop-name">Name of the Shop</div>
-                <div class="shop-card">
+                <div class="shop-card" data-shop="mcdonalds" data-category="mcdonalds">
+                    <div class="shop-name">Name of the Shop</div>
                     <div class="shop-picture">
                         <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 12">
+                        <div class="shop-info">Name of the product / price</div>
                     </div>
-                    <div class="shop-info">Name of the product / price</div>
                     <button class="shop-add-btn">Add</button>
                 </div>
             </div>
