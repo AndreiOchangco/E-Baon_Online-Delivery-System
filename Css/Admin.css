@@ -109,6 +109,8 @@
 .admin-sidebar.collapsed .admin-logo-box {
     width: 75px;
     height: 75px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 /* Hide menu text in collapsed mode */
