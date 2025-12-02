@@ -53,27 +53,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title>E-Baon Forgot Password</title>
     <link rel="stylesheet" href="../Css/Forgot.css">
+    <link rel="stylesheet" href="../Css/Index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<div class="logo">logo</div>
+<div class="auth-container">
+    <img class="logo-img" src="../images/e-baon-logo.png" alt="">
 
-<div class="card">
+    <div class="card">
     <h2>Forgot Password</h2>
 
     <form action="Forgot.php" method="POST">
-        <div class="field">
-            <span>🙎🏻‍♂️</span>
-            <input type="text" name="username" placeholder="user" required>
+        <div>
+            <label class="auth-label" for="name">Username</label>
+            <div class="field">
+                <span>🙎🏻‍♂️</span>
+                <input type="text" name="username" placeholder="username" required>
+            </div>
         </div>
 
-        <div class="field password-field">
-            <span>🔒</span>
-            <input type="password" id="forgot_password" name="new_password" placeholder="new password" required>
-            <span class="password-icon" id="toggleForgotPassword">
-                <i id="forgotEyeIcon" class="fa-solid fa-eye-slash"></i>
-            </span>
+        <div>
+            <label class="auth-label" for="password">Password</label>
+            <div class="field password-field">
+                <span>🔒</span>
+                <input type="password" id="forgot_password" name="new_password" placeholder="new password" required>
+                <span class="password-icon" id="toggleForgotPassword">
+                    <i id="forgotEyeIcon" class="fa-solid fa-eye-slash"></i>
+                </span>
+            </div>
         </div>
 
         <button class="btn-login" type="submit">Update Password</button>
@@ -103,6 +111,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 </div>
 
-<script src="../Javascript/Forgot.js"></script>
+<script>
+    var phpLoginError = "<?php echo htmlspecialchars($login_error, ENT_QUOTES, 'UTF-8'); ?>";
+</script>
+<script src="../Javascript/Index.js"></script>
+
 </body>
 </html>

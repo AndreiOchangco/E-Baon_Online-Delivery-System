@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include '../Connection/connection.php'; // Adjust path
+include '../Connection/connection.php';
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
     header("Location: ../../Main/Index.php");
@@ -78,83 +78,39 @@ $username = $_SESSION["username"] ?? "Customer";
             <span class="customer-category-line"></span>
         </div>
 
-        <div class="customer-category-row">
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-            <button class="category-circle-btn">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="">
-            </button>
-        </div>
+        <div class="customer-category-row" id="categoryRow">
+
+        <button class="category-circle-btn" data-category="all">
+            <img src="../images/Shop-Logos/all.png" class="category-circle-img">
+            <span class="category-label">All</span>
+        </button>
+
+        <button class="category-circle-btn" data-category="jollibee">
+            <img src="../images/Shop-Logos/jollibee.png" class="category-circle-img">
+            <span class="category-label">Jollibee</span>
+        </button>
+
+        <button class="category-circle-btn" data-category="mcdonalds">
+            <img src="../images/Shop-Logos/mcdonalds.png" class="category-circle-img">
+            <span class="category-label">McDonald's</span>
+        </button>
+
+        <button class="category-circle-btn" data-category="kfc">
+            <img src="../images/Shop-Logos/kfc.png" class="category-circle-img">
+            <span class="category-label">KFC</span>
+        </button>
+
+        <button class="category-circle-btn" data-category="burger-king">
+            <img src="../images/Shop-Logos/burger-king.png" class="category-circle-img">
+            <span class="category-label">Burger King</span>
+        </button>
+
+        <button class="category-circle-btn" data-category="starbucks">
+            <img src="../images/Shop-Logos/starbucks.png" class="category-circle-img">
+            <span class="category-label">Starbucks</span>
+        </button>
+
+    </div>
 
         <section class="customer-shop-row">
 
@@ -312,62 +268,108 @@ const sidebar = document.getElementById("sidebar");
 const backdrop = document.getElementById("sidebarBackdrop");
 const MOBILE_BREAKPOINT = 768;
 
-// Load saved state
-const savedState = localStorage.getItem("customerSidebarState") || "collapsed";
+// Always get the latest state
+function getSidebarState() {
+    return localStorage.getItem("customerSidebarState") || "collapsed";
+}
 
+function setSidebarState(state) {
+    localStorage.setItem("customerSidebarState", state);
+}
+
+// Apply saved state to UI
 function applySidebarState() {
+    const state = getSidebarState();
+
     if (window.innerWidth >= MOBILE_BREAKPOINT) {
         // Desktop
-        sidebar.classList.toggle("collapsed", savedState !== "expanded");
+        sidebar.classList.toggle("collapsed", state !== "expanded");
         sidebar.classList.remove("expanded-modal");
         backdrop.classList.remove("show");
     } else {
         // Mobile
-        sidebar.classList.toggle("expanded-modal", savedState === "expanded");
+        sidebar.classList.toggle("expanded-modal", state === "expanded");
         sidebar.classList.remove("collapsed");
-        backdrop.classList.toggle("show", savedState === "expanded");
+        backdrop.classList.toggle("show", state === "expanded");
     }
 
-    // Show sidebar after correct state is applied
-    sidebar.classList.add("visible");
+    // Ensure sidebar appears correctly after layout
+    requestAnimationFrame(() => {
+        sidebar.classList.add("visible");
+    });
 }
 
-// Apply immediately on page load
+// Initial render
 applySidebarState();
 
-// Toggle sidebar
+// Toggle button
 function toggleSidebar() {
+    const state = getSidebarState();
+
     if (window.innerWidth < MOBILE_BREAKPOINT) {
-        const open = sidebar.classList.contains("expanded-modal");
-        sidebar.classList.toggle("expanded-modal", !open);
-        backdrop.classList.toggle("show", !open);
-        localStorage.setItem("customerSidebarState", !open ? "expanded" : "collapsed");
+        // Mobile modal drawer
+        const newState = state === "expanded" ? "collapsed" : "expanded";
+        sidebar.classList.toggle("expanded-modal", newState === "expanded");
+        backdrop.classList.toggle("show", newState === "expanded");
+        setSidebarState(newState);
     } else {
-        const isCollapsed = sidebar.classList.contains("collapsed");
-        sidebar.classList.toggle("collapsed", !isCollapsed);
-        localStorage.setItem("customerSidebarState", isCollapsed ? "expanded" : "collapsed");
+        // Desktop collapse/expand
+        const newState = state === "expanded" ? "collapsed" : "expanded";
+        sidebar.classList.toggle("collapsed", newState === "collapsed");
+        setSidebarState(newState);
     }
 }
 
-// Mobile backdrop click
+// Backdrop click (mobile only)
 backdrop.addEventListener("click", () => {
     sidebar.classList.remove("expanded-modal");
     backdrop.classList.remove("show");
-    localStorage.setItem("customerSidebarState", "collapsed");
+    setSidebarState("collapsed");
 });
 
-// Click outside sidebar (mobile only)
-document.addEventListener("click", (e) => {
+// Close mobile sidebar when clicking outside
+document.addEventListener("click", (event) => {
     if (window.innerWidth >= MOBILE_BREAKPOINT) return;
-    if (!sidebar.contains(e.target) && !e.target.classList.contains("sidebar-toggle")) {
+
+    const clickedInsideSidebar = sidebar.contains(event.target);
+    const isToggle = event.target.classList.contains("sidebar-toggle");
+
+    if (!clickedInsideSidebar && !isToggle) {
         sidebar.classList.remove("expanded-modal");
         backdrop.classList.remove("show");
-        localStorage.setItem("customerSidebarState", "collapsed");
+        setSidebarState("collapsed");
     }
 });
 
 // Reapply on resize
 window.addEventListener("resize", applySidebarState);
+</script>
+<script>
+// Filtering logic
+document.querySelectorAll('.category-circle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const selected = btn.dataset.category;
+
+        const cards = document.querySelectorAll('.shop-card');
+
+        // Step 1: Fade out all cards
+        cards.forEach(c => c.classList.add('hide'));
+
+        setTimeout(() => {
+            cards.forEach(card => {
+                const shop = card.dataset.shop;
+
+                if (selected === 'all' || shop === selected) {
+                    card.classList.remove('hide');
+                    card.classList.add('show');
+                } else {
+                    card.classList.remove('show');
+                    card.classList.add('hide');
+                }
+            });
+        }, 300); // Matches CSS transition
+    });
+});
 </script>
 
 </body>

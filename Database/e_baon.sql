@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2025 at 05:13 PM
+-- Generation Time: Dec 02, 2025 at 02:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,6 +60,7 @@ CREATE TABLE `products` (
   `productID` int(25) NOT NULL,
   `product_image` varchar(25) NOT NULL,
   `shopName` varchar(25) NOT NULL,
+  `shopCategory` varchar(25) NOT NULL,
   `productName` varchar(255) NOT NULL,
   `productPrice` int(25) NOT NULL,
   `productQuantity` int(25) NOT NULL

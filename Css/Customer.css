@@ -50,7 +50,6 @@
     color: #ecfdf5;
     font-size: 20px;
     cursor: pointer;
-    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +112,7 @@
     margin-bottom: 18px;
     display: flex;
     justify-content: center;
+    z-index: 1;
 }
 
 .promo-banner-box {
@@ -159,33 +159,59 @@
 
 .customer-category-row {
     display: flex;
-    gap: 14px;
-    margin-bottom: 16px;
-    padding: 4px 4px 8px 4px;
+    gap: 18px;
+    padding: 10px 4px;
     overflow-x: auto;
-    flex-wrap: nowrap;
 }
 
 .category-circle-btn {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    border: 3px solid #86efac;
+    border: none;
+    padding: 0;
     background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 0;
-    overflow: hidden;
-    flex-shrink: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-circle-btn:hover {
+    transform: scale(1.10);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.18);
 }
 
 .category-circle-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.category-label {
+    font-size: 12px;
+    color: #064e3b;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* Animation states */
+.shop-card {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.shop-card.hide {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.shop-card.show {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .customer-shop-row {
@@ -248,7 +274,7 @@
     cursor: pointer;
 }
 
-/* Footer always top */
+/* FOOTER ALWAYS ON TOP */
 .customer-bottom-nav {
     position: fixed;
     bottom: 0;
@@ -260,74 +286,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 1500; /* highest */
-}
-
-/* Collapsed sidebar below footer */
-.admin-sidebar.collapsed {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 70px;
-    height: calc(100vh - 64px);
-    z-index: 1200; /* below footer */
-}
-
-/* Expanded modal sidebar above backdrop but below footer */
-.admin-sidebar.expanded-modal {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 250px;
-    height: calc(100vh - 64px);
-    box-shadow: 0 0 20px rgba(0,0,0,0.35);
-    z-index: 1400; /* below footer 1500 */
-}
-
-/* Backdrop always under sidebar */
-.sidebar-backdrop {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 64px);
-    background: rgba(0,0,0,0.35);
-    display: none;
-    z-index: 1300; /* below expanded sidebar but above collapsed sidebar */
-}
-
-.sidebar-backdrop.show {
-    display: block;
-}
-
-/* when the modal sidebar is open it should sit above backdrop but below footer if you prefer footer always visible: */
-.admin-sidebar.expanded-modal {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 280px;
-    height: calc(100vh - 64px);
-    z-index: 1100;              /* above backdrop but below footer */
-    transform: translateX(0);
-}
-
-/* ensure collapsed aside remains on the left and below footer z index (so footer still visible) */
-.admin-sidebar.collapsed {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 115px;
-    z-index: 1050;
-}
-
-/* small safety for mobile: footer should always be on top */
-@media (max-width: 768px) {
-    .customer-bottom-nav {
-        z-index: 1300;
-    }
-    .sidebar-backdrop {
-        top: 64px;
-    }
+    z-index: 4000;
 }
 
 .bottom-icon {
@@ -355,6 +314,7 @@
     color: #16a34a;
 }
 
+/* MODALS */
 .modal {
     position: fixed;
     top: 0;
@@ -392,53 +352,64 @@
     cursor: pointer;
 }
 
+/* --------------------------------------------------------- */
+/* FIXED AND CLEAN SIDEBAR SYSTEM */
+/* --------------------------------------------------------- */
 
-
-.admin-container {
-    display: flex;
-    height: 100vh;
-    width: 100%;
-}
-
-
-
-/* Fixed collapsed sidebar */
-/* Initially hide sidebar to prevent flash */
+/* BASE SIDEBAR */
 .admin-sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: calc(100vh - 64px);
+    background: #fff;
+    overflow: hidden;
+    transition: width 0.25s ease, opacity 0.25s ease;
+    z-index: 3000;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease, width 0.25s ease;
 }
 
-/* Once JS applies correct state */
+/* JS enables this to prevent flashing */
 .admin-sidebar.visible {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Expanded is modal drawer */
-.admin-sidebar.expanded-modal {
-    width: 250px; /* modal width */
-    left: 0;
-    box-shadow: 0 0 20px rgba(0,0,0,0.35);
+/* COLLAPSED STATE */
+.admin-sidebar.collapsed {
+    width: 70px;
 }
 
-/* Backdrop overlay */
+/* EXPANDED MODAL DRAWER */
+.admin-sidebar.expanded-modal {
+    width: 260px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+/* BACKDROP */
 .sidebar-backdrop {
     position: fixed;
-    top: 0;
+    top: 64px;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.35);
+    height: calc(100vh - 64px);
+    background: rgba(0, 0, 0, 0.35);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease;
-    z-index: 998; /* behind sidebar modal */
+    z-index: 2500;
 }
 
-/* Active backdrop */
+/* BACKDROP WHEN ACTIVE */
 .sidebar-backdrop.show {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* MOBILE SAFETY */
+@media (max-width: 768px) {
+    .customer-bottom-nav {
+        z-index: 4000;
+    }
 }
