@@ -52,6 +52,15 @@
     padding: 8px;
 }
 
+/* Logo inside sidebar */
+.admin-sidebar .admin-logo-box {
+    display: block;
+    width: 130px;
+    height: 130px;
+    margin: 16px auto;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
 /* Disable all sidebar transitions during page load */
 .admin-sidebar.no-anim,
 .admin-sidebar.no-anim * {
