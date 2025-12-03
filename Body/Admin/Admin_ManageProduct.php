@@ -1,18 +1,91 @@
 <?php
 session_start();
+require_once "../../Connection/connection.php";
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "admin") {
-    header("Location: Index.php");
+    header("Location: ../../Main/Index.php");
     exit();
 }
 
 $username = $_SESSION["username"] ?? "Admin";
+
+// Fetch all products
+$products = $conn->query("SELECT * FROM products ORDER BY productID DESC");
+
+// Handle Add Product
+if(isset($_POST['add_product'])){
+    $shopName = $_POST['shopName'];
+    $shopCategory = $_POST['shopCategory'];
+    $productName = $_POST['productName'];
+    $productPrice = $_POST['productPrice'];
+    $productQuantity = $_POST['productQuantity'];
+
+    if(isset($_FILES['productImage']) && $_FILES['productImage']['error'] === 0){
+        $fileTmp = $_FILES['productImage']['tmp_name'];
+        $fileName = uniqid() . "_" . basename($_FILES['productImage']['name']);
+        $fileDestination = "../../images/products/" . $fileName;
+
+        if(move_uploaded_file($fileTmp, $fileDestination)){
+            $stmt = $conn->prepare("INSERT INTO products (product_image, shopName, shopCategory, productName, productPrice, productQuantity) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssii", $fileName, $shopName, $shopCategory, $productName, $productPrice, $productQuantity);
+            $stmt->execute();
+            $stmt->close();
+
+            header("Location: Admin_ManageProduct.php");
+            exit();
+        }
+    }
+}
+
+// Handle Delete Product
+if(isset($_GET['delete_id'])){
+    $id = intval($_GET['delete_id']);
+    $result = $conn->query("SELECT product_image FROM products WHERE productID=$id");
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        $imagePath = "../../images/products/" . $row['product_image'];
+        if(file_exists($imagePath)) unlink($imagePath);
+    }
+    $conn->query("DELETE FROM products WHERE productID=$id");
+    header("Location: Admin_ManageProduct.php");
+    exit();
+}
+
+// Handle Edit Product
+if(isset($_POST['edit_product'])){
+    $id = $_POST['productID'];
+    $shopName = $_POST['shopName'];
+    $shopCategory = $_POST['shopCategory'];
+    $productName = $_POST['productName'];
+    $productPrice = $_POST['productPrice'];
+    $productQuantity = $_POST['productQuantity'];
+
+    if(isset($_FILES['productImage']) && $_FILES['productImage']['error'] === 0){
+        $result = $conn->query("SELECT product_image FROM products WHERE productID=$id");
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            $oldImage = "../../images/products/" . $row['product_image'];
+            if(file_exists($oldImage)) unlink($oldImage);
+        }
+
+        $fileTmp = $_FILES['productImage']['tmp_name'];
+        $fileName = uniqid() . "_" . basename($_FILES['productImage']['name']);
+        move_uploaded_file($fileTmp, "../../images/products/" . $fileName);
+
+        $conn->query("UPDATE products SET product_image='$fileName', shopName='$shopName', shopCategory='$shopCategory', productName='$productName', productPrice=$productPrice, productQuantity=$productQuantity WHERE productID=$id");
+    } else {
+        $conn->query("UPDATE products SET shopName='$shopName', shopCategory='$shopCategory', productName='$productName', productPrice=$productPrice, productQuantity=$productQuantity WHERE productID=$id");
+    }
+
+    header("Location: Admin_ManageProduct.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Order | Admin</title>
+    <title>Manage Product | Admin</title>
     <link rel="shortcut icon" href="../../images/e-baon-logo.png">
     <link rel="stylesheet" href="../../Css/Admin.css">
     <link rel="stylesheet" href="../Css/DisableStyles.css">
@@ -103,26 +176,100 @@ $username = $_SESSION["username"] ?? "Admin";
         <!-- MAIN CONTENT AREA -->
         <main class="admin-main-content">
             <div class="product-wrapper">
+
+                <h2>Add Product</h2>
                 <div class="product-card">
+                <form method="POST" enctype="multipart/form-data">
+                    <label>Shop Name:</label><br>
+                    <input type="text" name="shopName" required><br><br>
 
-                    <div class="product-search-row">
-                        <input type="text" placeholder="Search Product Name">
-                        <button class="product-search-btn">🔍</button>
-                    </div>
+                    <label>Shop Category:</label><br>
+                    <input type="text" name="shopCategory" required><br><br>
 
-                    <table class="product-table">
-                        <thead>
-                            <tr>
-                                <th style="width:80px;">ID</th>
-                                <th>Product Name</th>
-                                <th style="width:140px;">Category</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <label>Product Name:</label><br>
+                    <input type="text" name="productName" required><br><br>
 
+                    <label>Product Price:</label><br>
+                    <input type="number" name="productPrice" required><br><br>
+
+                    <label>Product Quantity:</label><br>
+                    <input type="number" name="productQuantity" required><br><br>
+
+                    <label>Product Image:</label><br>
+                    <div id="dropArea" class="drop-area">
+                        Drag & Drop Image Here or Click to Upload
+                        <input type="file" name="productImage" accept="image/*" id="fileInput" style="display:none" required>
+                        <img id="preview" class="preview-img" src="" style="display:none;">
+                    </div><br>
+
+                    <button type="submit" name="add_product">Add Product</button>
+                </form>
                 </div>
+
+                <h2>Existing Products</h2>
+                <table class="product-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Shop Name</th>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+                <?php while($row = $products->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $row['productID'] ?></td>
+                    <td><img src="../../images/products/<?= $row['product_image'] ?>" class="shop-img-preview"></td>
+                    <td><?= $row['shopName'] ?></td>
+                    <td><?= $row['shopCategory'] ?></td>
+                    <td><?= $row['productName'] ?></td>
+                    <td><?= number_format($row['productPrice'],2) ?></td>
+                    <td><?= $row['productQuantity'] ?></td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="openModal(<?= $row['productID'] ?>,'<?= addslashes($row['shopName']) ?>','<?= addslashes($row['shopCategory']) ?>','<?= addslashes($row['productName']) ?>',<?= $row['productPrice'] ?>,<?= $row['productQuantity'] ?>,'<?= $row['product_image'] ?>')">Edit</button>
+                        <a href="?delete_id=<?= $row['productID'] ?>" onclick="return confirm('Delete this product?')" class="action-btn delete-btn">Delete</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+                </table>
+
+                <!-- Edit Modal -->
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeModal()">&times;</span>
+                        <h3>Edit Product</h3>
+                        <form method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="productID" id="modalProductID">
+                            <label>Shop Name:</label><br>
+                            <input type="text" name="shopName" id="modalShopName" required><br><br>
+
+                            <label>Shop Category:</label><br>
+                            <input type="text" name="shopCategory" id="modalShopCategory" required><br><br>
+
+                            <label>Product Name:</label><br>
+                            <input type="text" name="productName" id="modalProductName" required><br><br>
+
+                            <label>Product Price:</label><br>
+                            <input type="number" name="productPrice" id="modalProductPrice" required><br><br>
+
+                            <label>Product Quantity:</label><br>
+                            <input type="number" name="productQuantity" id="modalProductQuantity" required><br><br>
+
+                            <label>Product Image:</label><br>
+                            <div id="editDropArea" class="drop-area">
+                                Drag & Drop Image or Click
+                                <input type="file" name="productImage" accept="image/*" id="editFileInput" style="display:none">
+                                <img id="modalPreview" class="preview-img" src=""><br>
+                                <button type="button" id="resetImageBtn">Reset Image</button>
+                            </div>
+
+                            <button type="submit" name="edit_product">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </main>
 
@@ -205,6 +352,66 @@ const observer = new MutationObserver(() => {
     }
 });
 observer.observe(sidebar, { attributes: true, attributeFilter: ["class"] });
+</script>
+
+<script>
+// Drag & Drop Add
+const dropArea = document.getElementById('dropArea');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+
+dropArea.addEventListener('click', () => fileInput.click());
+dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('hover'); });
+dropArea.addEventListener('dragleave', e => { e.preventDefault(); dropArea.classList.remove('hover'); });
+dropArea.addEventListener('drop', e => {
+    e.preventDefault();
+    dropArea.classList.remove('hover');
+    const file = e.dataTransfer.files[0];
+    if(file){ fileInput.files = e.dataTransfer.files; previewFile(file); }
+});
+
+fileInput.addEventListener('change', e => previewFile(e.target.files[0]));
+function previewFile(file){
+    preview.style.display='block';
+    preview.src = URL.createObjectURL(file);
+}
+
+// Drag & Drop Edit Modal
+const editDrop = document.getElementById('editDropArea');
+const editInput = document.getElementById('editFileInput');
+const modalPreview = document.getElementById('modalPreview');
+
+editDrop.addEventListener('click', () => editInput.click());
+editDrop.addEventListener('dragover', e => { e.preventDefault(); editDrop.classList.add('hover'); });
+editDrop.addEventListener('dragleave', e => { e.preventDefault(); editDrop.classList.remove('hover'); });
+editDrop.addEventListener('drop', e => {
+    e.preventDefault(); editDrop.classList.remove('hover');
+    const file = e.dataTransfer.files[0];
+    if(file){ editInput.files = e.dataTransfer.files; modalPreview.src = URL.createObjectURL(file); }
+});
+
+// Modal Edit
+let modal = document.getElementById('editModal');
+let modalProductID = document.getElementById('modalProductID');
+let modalShopName = document.getElementById('modalShopName');
+let modalShopCategory = document.getElementById('modalShopCategory');
+let modalProductName = document.getElementById('modalProductName');
+let modalProductPrice = document.getElementById('modalProductPrice');
+let modalProductQuantity = document.getElementById('modalProductQuantity');
+
+function openModal(id, shopName, shopCategory, productName, price, quantity, image){
+    modal.style.display='flex';
+    modalProductID.value=id;
+    modalShopName.value=shopName;
+    modalShopCategory.value=shopCategory;
+    modalProductName.value=productName;
+    modalProductPrice.value=price;
+    modalProductQuantity.value=quantity;
+    modalPreview.src="../../images/products/"+image;
+}
+
+function closeModal(){ modal.style.display='none'; }
+window.onclick = function(e){ if(e.target==modal) closeModal(); }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

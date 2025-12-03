@@ -104,27 +104,27 @@ $shops = $conn->query("SELECT * FROM shops ORDER BY shopID DESC");
             <span class="admin-menu-item-icon">📊</span>
             <span class="admin-menu-item-text">Dashboard</span>
         </a>
-        <a href="../Body/Admin/Admin_ManageOrder.php" class="admin-menu-item" data-tooltip="Manage Order">
+        <a href="Admin_ManageOrder.php" class="admin-menu-item" data-tooltip="Manage Order">
             <span class="admin-menu-item-icon">📋</span>
             <span class="admin-menu-item-text">Manage Order</span>
         </a>
-        <a href="../../Body/Admin/Admin_ManageCategory.php" class="admin-menu-item" data-tooltip="Manage Shop Category">
+        <a href="Admin_ManageCategory.php" class="admin-menu-item" data-tooltip="Manage Shop Category">
             <span class="admin-menu-item-icon">🏪</span>
             <span class="admin-menu-item-text">Manage Category</span>
         </a>
-        <a href="../Body/Admin/Admin_ManageProduct.php" class="admin-menu-item" data-tooltip="Manage Product">
+        <a href="Admin_ManageProduct.php" class="admin-menu-item" data-tooltip="Manage Product">
             <span class="admin-menu-item-icon">📦</span>
             <span class="admin-menu-item-text">Manage Product</span>
         </a>
-        <a href="../Body/Admin/Admin_ManageCustomer.php" class="admin-menu-item" data-tooltip="Manage Customer">
+        <a href="Admin_ManageCustomer.php" class="admin-menu-item" data-tooltip="Manage Customer">
             <span class="admin-menu-item-icon">🙎🏻‍♂️</span>
             <span class="admin-menu-item-text">Manage Customer</span>
         </a>
-        <a href="../Body/Admin/Admin_ManageDelivery.php" class="admin-menu-item" data-tooltip="Manage Delivery">
+        <a href="Admin_ManageDelivery.php" class="admin-menu-item" data-tooltip="Manage Delivery">
             <span class="admin-menu-item-icon">🛵</span>
             <span class="admin-menu-item-text">Manage Delivery D.</span>
         </a>
-        <a href="../Body/Admin/Admin_ManageAdminAcc.php" class="admin-menu-item" data-tooltip="Manage Admin">
+        <a href="Admin_ManageAdminAcc.php" class="admin-menu-item" data-tooltip="Manage Admin">
             <span class="admin-menu-item-icon">⚙️</span>
             <span class="admin-menu-item-text">Manage Admin Acc.</span>
         </a>
@@ -136,59 +136,111 @@ $shops = $conn->query("SELECT * FROM shops ORDER BY shopID DESC");
 
 <main class="admin-main-content">
 
-<h2>Add Shop Category</h2>
-<form method="POST" enctype="multipart/form-data">
-    <label>Shop Name:</label><br>
-    <input type="text" name="shopName" required><br><br>
-    <label>Shop Category:</label><br>
-    <input type="text" name="shopCategory" required><br><br>
-    
-    <label>Shop Image:</label><br>
-    <div id="dropArea" class="drop-area">
-        Drag & Drop Image Here or Click to Upload
-        <input type="file" name="shopImage" accept="image/*" id="fileInput" style="display:none" required>
-        <img id="preview" class="preview-img" src="" style="display:none;">
-    </div><br>
+<div class="shop-wrapper">
 
-    <button type="submit" name="add_category">Add Category</button>
-</form>
+    <div class="shop-card">
+        <h2>Add Shop Category</h2>
 
-<h2>Existing Shop Categories</h2>
-<table class="shop-table">
-<tr><th>ID</th><th>Name</th><th>Category</th><th>Image</th><th>Actions</th></tr>
-<?php while($row = $shops->fetch_assoc()): ?>
-<tr>
-    <td><?= $row['shopID'] ?></td>
-    <td><?= $row['shopName'] ?></td>
-    <td><?= $row['shopCategory'] ?></td>
-    <td><img src="../../images/shops/<?= $row['shopImage'] ?>" class="shop-img-preview"></td>
-    <td>
-        <button class="action-btn edit-btn" onclick="openModal(<?= $row['shopID'] ?>,'<?= addslashes($row['shopName']) ?>','<?= addslashes($row['shopCategory']) ?>','<?= $row['shopImage'] ?>')">Edit</button>
-        <a href="?delete_id=<?= $row['shopID'] ?>" onclick="return confirm('Delete this shop?')" class="action-btn delete-btn">Delete</a>
-    </td>
-</tr>
-<?php endwhile; ?>
-</table>
+        <form method="POST" enctype="multipart/form-data">
 
-<!-- Edit Modal -->
+            <label>Shop Name:</label>
+            <input type="text" name="shopName" required>
+
+            <br><br>
+
+            <label>Shop Category:</label>
+            <input type="text" name="shopCategory" required>
+
+            <br><br>
+
+            <label>Shop Image:</label>
+            <div id="dropArea" class="drop-area">
+                Drag & Drop Image Here or Click to Upload
+                <input type="file" name="shopImage" accept="image/*" id="fileInput" style="display:none" required>
+                <img id="preview" class="preview-img" src="" style="display:none;">
+            </div>
+
+            <button type="submit" name="add_category" class="action-btn edit-btn">Add Category</button>
+
+        </form>
+    </div>
+
+
+    <div class="shop-card" style="margin-top:24px;">
+        <h2>Existing Shop Categories</h2>
+
+        <table class="shop-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <?php while($row = $shops->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $row['shopID'] ?></td>
+                    <td><?= $row['shopName'] ?></td>
+                    <td><?= $row['shopCategory'] ?></td>
+                    <td>
+                        <img src="../../images/shops/<?= $row['shopImage'] ?>" class="shop-img-preview">
+                    </td>
+                    <td>
+                        <button class="action-btn edit-btn"
+                            onclick="openModal(<?= $row['shopID'] ?>,'<?= addslashes($row['shopName']) ?>','<?= addslashes($row['shopCategory']) ?>','<?= $row['shopImage'] ?>')">
+                            Edit
+                        </button>
+
+                        <a href="?delete_id=<?= $row['shopID'] ?>"
+                           onclick="return confirm('Delete this shop?')"
+                           class="action-btn delete-btn">
+                           Delete
+                        </a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<!-- EDIT MODAL -->
 <div id="editModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h3>Edit Shop</h3>
+
         <form method="POST" enctype="multipart/form-data">
+
             <input type="hidden" name="shopID" id="modalShopID">
-            <label>Shop Name:</label><br>
-            <input type="text" name="shopName" id="modalShopName" required><br><br>
-            <label>Shop Category:</label><br>
-            <input type="text" name="shopCategory" id="modalShopCategory" required><br><br>
-            <label>Shop Image:</label><br>
+
+            <label>Shop Name:</label>
+            <input type="text" name="shopName" id="modalShopName" required>
+
+            <br><br>
+
+            <label>Shop Category:</label>
+            <input type="text" name="shopCategory" id="modalShopCategory" required>
+
+            <br><br>
+
+            <label>Shop Image:</label>
             <div id="editDropArea" class="drop-area">
                 Drag & Drop Image or Click
                 <input type="file" name="shopImage" accept="image/*" id="editFileInput" style="display:none">
-                <img id="modalPreview" class="preview-img" src=""><br>
-                <button type="button" id="resetImageBtn">Reset Image</button>
+                <img id="modalPreview" class="preview-img" src="">
+                <br>
+                <button type="button" id="resetImageBtn" class="action-btn delete-btn">Reset Image</button>
             </div>
-            <button type="submit" name="edit_category">Save Changes</button>
+
+            <button type="submit" name="edit_category" class="action-btn edit-btn">Save Changes</button>
+
         </form>
     </div>
 </div>
@@ -196,10 +248,86 @@ $shops = $conn->query("SELECT * FROM shops ORDER BY shopID DESC");
 </main>
 </div>
 
+<!-- SMART COLLAPSE SCRIPT WITH LOCAL STORAGE -->
 <script>
 const sidebar = document.getElementById('sidebar');
-function toggleSidebar(){ sidebar.classList.toggle('collapsed'); }
+const MOBILE_BREAKPOINT = 768;
 
+/* 1. Disable ALL sidebar animations during initial load */
+sidebar.classList.add("no-anim");
+
+/* 2. Apply saved state BEFORE anything renders */
+const savedState = localStorage.getItem("adminSidebarState");
+if (savedState === "collapsed") {
+    sidebar.classList.add("collapsed");
+} else {
+    sidebar.classList.remove("collapsed");
+}
+
+/* 3. Enable animations after load and after the logo finishes layout */
+window.addEventListener("load", () => {
+    // Give browser a moment to finalize layout to stop flicker
+    setTimeout(() => {
+        sidebar.classList.remove("no-anim");
+        sidebar.classList.add("expanded-ready");
+    }, 120);
+});
+
+/* SIDEBAR TOGGLE FUNCTION */
+function toggleSidebar() {
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+        sidebar.classList.toggle("show");
+        return;
+    }
+
+    const isCollapsed = sidebar.classList.contains("collapsed");
+
+    sidebar.classList.add("transitioning");
+    sidebar.classList.remove("expanded-ready");
+
+    if (isCollapsed) {
+        /* EXPANDING */
+        sidebar.classList.remove("collapsed");
+
+        setTimeout(() => {
+            sidebar.classList.remove("transitioning");
+            sidebar.classList.add("expanded-ready");
+        }, 300);
+
+        localStorage.setItem("adminSidebarState", "expanded");
+
+    } else {
+        /* COLLAPSING */
+        sidebar.classList.add("collapsed");
+
+        setTimeout(() => {
+            sidebar.classList.remove("transitioning");
+        }, 300);
+
+        localStorage.setItem("adminSidebarState", "collapsed");
+    }
+}
+
+/* CLOSE SIDEBAR ON MOBILE CLICK OUTSIDE */
+document.addEventListener("click", function(e) {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+    if (!sidebar.contains(e.target) && !e.target.classList.contains("sidebar-toggle")) {
+        sidebar.classList.remove("show");
+    }
+});
+
+/* PREVENT BACKGROUND SCROLL WHEN MOBILE SIDEBAR IS OPEN */
+const observer = new MutationObserver(() => {
+    if (sidebar.classList.contains("show")) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "";
+    }
+});
+observer.observe(sidebar, { attributes: true, attributeFilter: ["class"] });
+</script>
+
+<script>
 // Drag & Drop Add
 const dropArea = document.getElementById('dropArea');
 const fileInput = document.getElementById('fileInput');
@@ -246,11 +374,10 @@ function openModal(id,name,category,image){
     modalShopID.value=id;
     modalShopName.value=name;
     modalShopCategory.value=category;
-    modalPreview.src="../images/shops/"+image;
+    modalPreview.src="../../images/shops/"+image;
 }
 function closeModal(){ modal.style.display='none'; }
 window.onclick = function(e){ if(e.target==modal) closeModal(); }
-
 </script>
 </body>
 </html>

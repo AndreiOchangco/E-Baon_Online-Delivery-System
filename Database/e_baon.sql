@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2025 at 06:27 AM
+-- Generation Time: Dec 03, 2025 at 04:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -78,6 +78,13 @@ CREATE TABLE `shops` (
   `shopName` varchar(25) NOT NULL,
   `shopImage` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shops`
+--
+
+INSERT INTO `shops` (`shopID`, `shopCategory`, `shopName`, `shopImage`) VALUES
+(1, 'jollibee', 'Jollibee', '6930312bdec10_jollibee.png');
 
 -- --------------------------------------------------------
 
@@ -171,7 +178,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `shopID` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `shopID` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
