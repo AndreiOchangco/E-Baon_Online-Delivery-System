@@ -7,6 +7,14 @@ if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "customer") {
     exit();
 }
 
+// Fetch categories
+$categoryQuery = "SELECT * FROM shops ORDER BY shopName ASC";
+$categories = $conn->query($categoryQuery);
+
+// Fetch products
+$productQuery = "SELECT * FROM products ORDER BY productID ASC";
+$products = $conn->query($productQuery);
+
 $userID = $_SESSION["user_id"];
 $username = $_SESSION["username"] ?? "Customer";
 ?>
@@ -78,182 +86,43 @@ $username = $_SESSION["username"] ?? "Customer";
             <span class="customer-category-line"></span>
         </div>
 
-        <div class="customer-category-row" id="categoryRow">
+        <!-- Categories -->
+        <div class="customer-category-row">
+            <button class="category-circle-btn" data-category="all">
+                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="All">
+                <div class="category-label">All</div>
+            </button>
+            <?php while($cat = $categories->fetch_assoc()): ?>
+                <button class="category-circle-btn" data-category="<?= htmlspecialchars($cat['shopCategory']) ?>">
+                    <img src="<?= htmlspecialchars($cat['shopImage']) ?>" class="category-circle-img" alt="<?= htmlspecialchars($cat['shopName']) ?>">
+                    <div class="category-label"><?= htmlspecialchars($cat['shopName']) ?></div>
+                </button>
+            <?php endwhile; ?>
+        </div>
 
-        <button class="category-circle-btn" data-category="all">
-            <img src="../images/Shop-Logos/all.png" class="category-circle-img">
-            <span class="category-label">All</span>
-        </button>
-
-        <button class="category-circle-btn" data-category="jollibee">
-            <img src="../images/Shop-Logos/jollibee.png" class="category-circle-img">
-            <span class="category-label">Jollibee</span>
-        </button>
-
-        <button class="category-circle-btn" data-category="mcdonalds">
-            <img src="../images/Shop-Logos/mcdo.png" class="category-circle-img">
-            <span class="category-label">McDonald's</span>
-        </button>
-
-        <button class="category-circle-btn" data-category="kfc">
-            <img src="../images/Shop-Logos/kfc.png" class="category-circle-img">
-            <span class="category-label">KFC</span>
-        </button>
-
-        <button class="category-circle-btn" data-category="burger-king">
-            <img src="../images/Shop-Logos/burger-king.png" class="category-circle-img">
-            <span class="category-label">Burger King</span>
-        </button>
-
-        <button class="category-circle-btn" data-category="starbucks">
-            <img src="../images/Shop-Logos/starbucks.png" class="category-circle-img">
-            <span class="category-label">Starbucks</span>
-        </button>
-
-    </div>
-
+        <!-- Products -->
         <section class="customer-shop-row">
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="jollibee" data-category="jollibee">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 1">
-                        <div class="shop-info">Name of the product / price</div>
+            <?php while($prod = $products->fetch_assoc()): ?>
+                <div class="shop-column">
+                    <div class="shop-card" data-shop="<?= htmlspecialchars($prod['shopName']) ?>" data-category="<?= htmlspecialchars($prod['shopCategory']) ?>">
+                        <div class="shop-name"><?= htmlspecialchars($prod['shopName']) ?></div>
+                        <div class="shop-picture">
+                            <img src="<?= htmlspecialchars($prod['product_image']) ?>" class="shop-img" alt="<?= htmlspecialchars($prod['productName']) ?>">
+                            <div class="shop-info"><?= htmlspecialchars($prod['productName']) ?> / ₱<?= number_format($prod['productPrice'], 2) ?></div>
+                        </div>
+                        <button class="shop-add-btn">Add</button>
                     </div>
-                    <button class="shop-add-btn">Add</button>
                 </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="mcdonalds" data-category="mcdonalds">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 2">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="kfc" data-category="kfc">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 3">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="burger-king" data-category="burger-king">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 4">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="starbucks" data-category="starbucks">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 5">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="jollibee" data-category="jollibee">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 6">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="mcdonalds" data-category="mcdonalds">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 7">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="kfc" data-category="kfc">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 8">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="burger-king" data-category="burger-king">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 9">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="starbucks" data-category="starbucks">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 10">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="jollibee" data-category="jollibee">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 11">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
-
-            <div class="shop-column">
-                <div class="shop-card" data-shop="mcdonalds" data-category="mcdonalds">
-                    <div class="shop-name">Name of the Shop</div>
-                    <div class="shop-picture">
-                        <img src="../images/customer/placeholder.jpg" class="shop-img" alt="Product 12">
-                        <div class="shop-info">Name of the product / price</div>
-                    </div>
-                    <button class="shop-add-btn">Add</button>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </section>
-        </main>
+    </main>
 
-        <footer class="customer-bottom-nav">
-            <a href="../Body/Customer/Cart.php" class="bottom-icon" style="text-decoration:none;">🛒</a>
-            <div class="bottom-status">No Order Yet</div>
-            <a href="../Body/Customer/Profile.php" class="bottom-icon" style="text-decoration:none;">👤</a>
-        </footer>
-    </div>
+    <footer class="customer-bottom-nav">
+        <a href="../Body/Customer/Cart.php" class="bottom-icon" style="text-decoration:none;">🛒</a>
+        <div class="bottom-status">No Order Yet</div>
+        <a href="../Body/Customer/Profile.php" class="bottom-icon" style="text-decoration:none;">👤</a>
+    </footer>
+</div>
 
 
 <div class="modal" id="addModal">
@@ -344,30 +213,31 @@ document.addEventListener("click", (event) => {
 // Reapply on resize
 window.addEventListener("resize", applySidebarState);
 </script>
+
+<!-- JS for category filtering -->
 <script>
-// Filtering logic
-document.querySelectorAll('.category-circle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const selected = btn.dataset.category;
+document.addEventListener('DOMContentLoaded', () => {
+    const categoryButtons = document.querySelectorAll('.category-circle-btn');
+    const shopCards = document.querySelectorAll('.shop-card');
 
-        const cards = document.querySelectorAll('.shop-card');
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedCategory = button.getAttribute('data-category');
 
-        // Step 1: Fade out all cards
-        cards.forEach(c => c.classList.add('hide'));
+            shopCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
 
-        setTimeout(() => {
-            cards.forEach(card => {
-                const shop = card.dataset.shop;
-
-                if (selected === 'all' || shop === selected) {
-                    card.classList.remove('hide');
+                if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                    card.parentElement.style.display = 'flex';
                     card.classList.add('show');
+                    card.classList.remove('hide');
                 } else {
-                    card.classList.remove('show');
+                    card.parentElement.style.display = 'none';
                     card.classList.add('hide');
+                    card.classList.remove('show');
                 }
             });
-        }, 300); // Matches CSS transition
+        });
     });
 });
 </script>
