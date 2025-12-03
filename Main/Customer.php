@@ -100,6 +100,11 @@ $username = $_SESSION["username"] ?? "Customer";
             <?php endwhile; ?>
         </div>
 
+        <div style="margin-top: 10px;" class="customer-category-header">
+            <span class="customer-category-label">Product</span>
+            <span class="customer-category-line"></span>
+        </div>
+
         <!-- Products -->
         <section class="customer-shop-row">
             <?php while($prod = $products->fetch_assoc()): ?>
