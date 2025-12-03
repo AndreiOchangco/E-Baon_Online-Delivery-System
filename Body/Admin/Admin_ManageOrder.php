@@ -54,6 +54,13 @@ $username = $_SESSION["username"] ?? "Admin";
                     <span class="admin-menu-item-text">Manage Order</span>
                 </a>
 
+                <a href="../../Body/Admin/Admin_ManageCategory.php"
+                class="admin-menu-item"
+                data-tooltip="Manage Shop Category">
+                    <span class="admin-menu-item-icon">🏪</span>
+                    <span class="admin-menu-item-text">Manage Category</span>
+                </a>
+
                 <a href="../../Body/Admin/Admin_ManageProduct.php"
                 class="admin-menu-item"
                 data-tooltip="Manage Product">

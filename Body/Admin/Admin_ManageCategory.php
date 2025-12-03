@@ -3,7 +3,7 @@ session_start();
 require_once "../../Connection/connection.php"; 
 
 if (!isset($_SESSION["user_id"]) || ($_SESSION["role"] ?? "") !== "admin") {
-    header("Location: Index.php");
+    header("Location: ../../Main/Index.php");
     exit();
 }
 
@@ -17,13 +17,18 @@ if (isset($_POST['add_category'])) {
     if (isset($_FILES['shopImage']) && $_FILES['shopImage']['error'] === 0) {
         $fileTmp = $_FILES['shopImage']['tmp_name'];
         $fileName = uniqid() . "_" . basename($_FILES['shopImage']['name']);
-        $fileDestination = "../images/shops/" . $fileName;
+        $fileDestination = "../../images/shops/" . $fileName;
 
         if (move_uploaded_file($fileTmp, $fileDestination)) {
             $stmt = $conn->prepare("INSERT INTO shops (shopName, shopCategory, shopImage) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $shopName, $shopCategory, $fileName);
             $stmt->execute();
             $stmt->close();
+
+            $conn->close();   // Close DB connection
+
+            header("Location: Admin_ManageCategory.php");  
+            exit();
         }
     }
 }
@@ -34,7 +39,7 @@ if (isset($_GET['delete_id'])) {
     $result = $conn->query("SELECT shopImage FROM shops WHERE shopID=$id");
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $imagePath = "../images/shops/" . $row['shopImage'];
+        $imagePath = "../../images/shops/" . $row['shopImage'];
         if (file_exists($imagePath)) unlink($imagePath);
     }
     $conn->query("DELETE FROM shops WHERE shopID=$id");
@@ -52,13 +57,13 @@ if (isset($_POST['edit_category'])) {
         $result = $conn->query("SELECT shopImage FROM shops WHERE shopID=$id");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $oldImage = "../images/shops/" . $row['shopImage'];
+            $oldImage = "../../images/shops/" . $row['shopImage'];
             if (file_exists($oldImage)) unlink($oldImage);
         }
 
         $fileTmp = $_FILES['shopImage']['tmp_name'];
         $fileName = uniqid() . "_" . basename($_FILES['shopImage']['name']);
-        $fileDestination = "../images/shops/" . $fileName;
+        $fileDestination = "../../images/shops/" . $fileName;
         move_uploaded_file($fileTmp, $fileDestination);
 
         $conn->query("UPDATE shops SET shopName='$shopName', shopCategory='$shopCategory', shopImage='$fileName' WHERE shopID=$id");
@@ -102,6 +107,10 @@ $shops = $conn->query("SELECT * FROM shops ORDER BY shopID DESC");
         <a href="../Body/Admin/Admin_ManageOrder.php" class="admin-menu-item" data-tooltip="Manage Order">
             <span class="admin-menu-item-icon">📋</span>
             <span class="admin-menu-item-text">Manage Order</span>
+        </a>
+        <a href="../../Body/Admin/Admin_ManageCategory.php" class="admin-menu-item" data-tooltip="Manage Shop Category">
+            <span class="admin-menu-item-icon">🏪</span>
+            <span class="admin-menu-item-text">Manage Category</span>
         </a>
         <a href="../Body/Admin/Admin_ManageProduct.php" class="admin-menu-item" data-tooltip="Manage Product">
             <span class="admin-menu-item-icon">📦</span>
@@ -152,7 +161,7 @@ $shops = $conn->query("SELECT * FROM shops ORDER BY shopID DESC");
     <td><?= $row['shopID'] ?></td>
     <td><?= $row['shopName'] ?></td>
     <td><?= $row['shopCategory'] ?></td>
-    <td><img src="../images/shops/<?= $row['shopImage'] ?>" class="shop-img-preview"></td>
+    <td><img src="../../images/shops/<?= $row['shopImage'] ?>" class="shop-img-preview"></td>
     <td>
         <button class="action-btn edit-btn" onclick="openModal(<?= $row['shopID'] ?>,'<?= addslashes($row['shopName']) ?>','<?= addslashes($row['shopCategory']) ?>','<?= $row['shopImage'] ?>')">Edit</button>
         <a href="?delete_id=<?= $row['shopID'] ?>" onclick="return confirm('Delete this shop?')" class="action-btn delete-btn">Delete</a>

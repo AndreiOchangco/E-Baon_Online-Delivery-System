@@ -94,7 +94,7 @@ $username = $_SESSION["username"] ?? "Customer";
             </button>
             <?php while($cat = $categories->fetch_assoc()): ?>
                 <button class="category-circle-btn" data-category="<?= htmlspecialchars($cat['shopCategory']) ?>">
-                    <img src="<?= htmlspecialchars($cat['shopImage']) ?>" class="category-circle-img" alt="<?= htmlspecialchars($cat['shopName']) ?>">
+                    <img src="../images/shops/<?= htmlspecialchars($cat['shopImage']) ?>" class="category-circle-img" alt="<?= htmlspecialchars($cat['shopName']) ?>">
                     <div class="category-label"><?= htmlspecialchars($cat['shopName']) ?></div>
                 </button>
             <?php endwhile; ?>
@@ -107,7 +107,7 @@ $username = $_SESSION["username"] ?? "Customer";
                     <div class="shop-card" data-shop="<?= htmlspecialchars($prod['shopName']) ?>" data-category="<?= htmlspecialchars($prod['shopCategory']) ?>">
                         <div class="shop-name"><?= htmlspecialchars($prod['shopName']) ?></div>
                         <div class="shop-picture">
-                            <img src="<?= htmlspecialchars($prod['product_image']) ?>" class="shop-img" alt="<?= htmlspecialchars($prod['productName']) ?>">
+                            <img src="../images/shops/<?= htmlspecialchars($prod['product_image']) ?>" class="shop-img" alt="<?= htmlspecialchars($prod['productName']) ?>">
                             <div class="shop-info"><?= htmlspecialchars($prod['productName']) ?> / ₱<?= number_format($prod['productPrice'], 2) ?></div>
                         </div>
                         <button class="shop-add-btn">Add</button>
