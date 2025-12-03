@@ -2,9 +2,8 @@
    MAIN LAYOUT: LEFT SIDEBAR + MAIN CONTENT
 ----------------------------------------------------------- */
 .admin-container {
-    display: flex;
-    height: 100vh;
     width: 100%;
+    margin: 0 auto;
 }
 
 /* HEADER (fixed) */
