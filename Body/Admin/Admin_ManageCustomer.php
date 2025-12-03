@@ -93,7 +93,6 @@ $username = $_SESSION["username"] ?? "Admin";
 
         <!-- LOGOUT BUTTON -->
         <div class="admin-bottom-bar">
-            <a href="../../Main/Admin.php" class="admin-logout">Back to Dashboard</a>
             <a href="../../Main/Logout.php" class="admin-logout">LOGOUT</a>
         </div>
 

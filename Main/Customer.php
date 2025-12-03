@@ -72,14 +72,14 @@ $username = $_SESSION["username"] ?? "Customer";
 
 <div style="top: 30px; margin-top: -30px; margin-bottom: -150px;" class="admin-container">
 
-        <!-- MAIN CONTENT AREA -->
-        <main class="admin-main-content">
-            <div class="customer-promo-row">
-                <div class="promo-banner-box">
-                    <img src="../images/customer/placeholder.jpg" class="promo-banner" alt="Promo banner">
-                    <div class="promo-banner-text">Placeholder Text</div>
-                </div>
+    <!-- MAIN CONTENT AREA -->
+    <main class="admin-main-content">
+        <div class="customer-promo-row">
+            <div class="promo-banner-box">
+                <img src="../images/customer/placeholder.jpg" class="promo-banner" alt="Promo banner">
+                <div class="promo-banner-text">Placeholder Text</div>
             </div>
+        </div>
 
         <div class="customer-category-header">
             <span class="customer-category-label">Category</span>
@@ -107,7 +107,7 @@ $username = $_SESSION["username"] ?? "Customer";
                     <div class="shop-card" data-shop="<?= htmlspecialchars($prod['shopName']) ?>" data-category="<?= htmlspecialchars($prod['shopCategory']) ?>">
                         <div class="shop-name"><?= htmlspecialchars($prod['shopName']) ?></div>
                         <div class="shop-picture">
-                            <img src="../images/shops/<?= htmlspecialchars($prod['product_image']) ?>" class="shop-img" alt="<?= htmlspecialchars($prod['productName']) ?>">
+                            <img src="../images/products/<?= htmlspecialchars($prod['product_image']) ?>" class="shop-img" alt="<?= htmlspecialchars($prod['productName']) ?>">
                             <div class="shop-info"><?= htmlspecialchars($prod['productName']) ?> / ₱<?= number_format($prod['productPrice'], 2) ?></div>
                         </div>
                         <button class="shop-add-btn">Add</button>

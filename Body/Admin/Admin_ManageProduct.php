@@ -18,7 +18,6 @@ if(isset($_POST['add_product'])){
     $shopCategory = $_POST['shopCategory'];
     $productName = $_POST['productName'];
     $productPrice = $_POST['productPrice'];
-    $productQuantity = $_POST['productQuantity'];
 
     if(isset($_FILES['productImage']) && $_FILES['productImage']['error'] === 0){
         $fileTmp = $_FILES['productImage']['tmp_name'];
@@ -26,8 +25,8 @@ if(isset($_POST['add_product'])){
         $fileDestination = "../../images/products/" . $fileName;
 
         if(move_uploaded_file($fileTmp, $fileDestination)){
-            $stmt = $conn->prepare("INSERT INTO products (product_image, shopName, shopCategory, productName, productPrice, productQuantity) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssii", $fileName, $shopName, $shopCategory, $productName, $productPrice, $productQuantity);
+            $stmt = $conn->prepare("INSERT INTO products (product_image, shopName, shopCategory, productName, productPrice) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssi", $fileName, $shopName, $shopCategory, $productName, $productPrice);
             $stmt->execute();
             $stmt->close();
 
@@ -58,7 +57,6 @@ if(isset($_POST['edit_product'])){
     $shopCategory = $_POST['shopCategory'];
     $productName = $_POST['productName'];
     $productPrice = $_POST['productPrice'];
-    $productQuantity = $_POST['productQuantity'];
 
     if(isset($_FILES['productImage']) && $_FILES['productImage']['error'] === 0){
         $result = $conn->query("SELECT product_image FROM products WHERE productID=$id");
@@ -72,9 +70,9 @@ if(isset($_POST['edit_product'])){
         $fileName = uniqid() . "_" . basename($_FILES['productImage']['name']);
         move_uploaded_file($fileTmp, "../../images/products/" . $fileName);
 
-        $conn->query("UPDATE products SET product_image='$fileName', shopName='$shopName', shopCategory='$shopCategory', productName='$productName', productPrice=$productPrice, productQuantity=$productQuantity WHERE productID=$id");
+        $conn->query("UPDATE products SET product_image='$fileName', shopName='$shopName', shopCategory='$shopCategory', productName='$productName', productPrice=$productPrice WHERE productID=$id");
     } else {
-        $conn->query("UPDATE products SET shopName='$shopName', shopCategory='$shopCategory', productName='$productName', productPrice=$productPrice, productQuantity=$productQuantity WHERE productID=$id");
+        $conn->query("UPDATE products SET shopName='$shopName', shopCategory='$shopCategory', productName='$productName', productPrice=$productPrice WHERE productID=$id");
     }
 
     header("Location: Admin_ManageProduct.php");
@@ -88,7 +86,7 @@ if(isset($_POST['edit_product'])){
     <title>Manage Product | Admin</title>
     <link rel="shortcut icon" href="../../images/e-baon-logo.png">
     <link rel="stylesheet" href="../../Css/Admin.css">
-    <link rel="stylesheet" href="../Css/DisableStyles.css">
+    <link rel="stylesheet" href="../../Css/DisableStyles.css">
     <link rel="stylesheet" href="../../Css/Admin_css/Admin_ManageProduct.css">
 </head>
 
@@ -166,7 +164,6 @@ if(isset($_POST['edit_product'])){
 
         <!-- LOGOUT BUTTON -->
         <div class="admin-bottom-bar">
-            <a href="../../Main/Admin.php" class="admin-logout">Back to Dashboard</a>
             <a href="../../Main/Logout.php" class="admin-logout">LOGOUT</a>
         </div>
 
@@ -177,63 +174,61 @@ if(isset($_POST['edit_product'])){
         <main class="admin-main-content">
             <div class="product-wrapper">
 
-                <h2>Add Product</h2>
                 <div class="product-card">
-                <form method="POST" enctype="multipart/form-data">
-                    <label>Shop Name:</label><br>
-                    <input type="text" name="shopName" required><br><br>
+                    <h2>Add Product</h2>
 
-                    <label>Shop Category:</label><br>
-                    <input type="text" name="shopCategory" required><br><br>
+                    <form method="POST" enctype="multipart/form-data">
+                        <label>Shop Name:</label><br>
+                        <input type="text" name="shopName" required><br><br>
 
-                    <label>Product Name:</label><br>
-                    <input type="text" name="productName" required><br><br>
+                        <label>Shop Category:</label><br>
+                        <input type="text" name="shopCategory" required><br><br>
 
-                    <label>Product Price:</label><br>
-                    <input type="number" name="productPrice" required><br><br>
+                        <label>Product Name:</label><br>
+                        <input type="text" name="productName" required><br><br>
 
-                    <label>Product Quantity:</label><br>
-                    <input type="number" name="productQuantity" required><br><br>
+                        <label>Product Price:</label><br>
+                        <input type="number" name="productPrice" required><br><br>
 
-                    <label>Product Image:</label><br>
-                    <div id="dropArea" class="drop-area">
-                        Drag & Drop Image Here or Click to Upload
-                        <input type="file" name="productImage" accept="image/*" id="fileInput" style="display:none" required>
-                        <img id="preview" class="preview-img" src="" style="display:none;">
-                    </div><br>
+                        <label>Product Image:</label><br>
+                        <div id="dropArea" class="drop-area">
+                            Drag & Drop Image Here or Click to Upload
+                            <input type="file" name="productImage" accept="image/*" id="fileInput" style="display:none" required>
+                            <img id="preview" class="preview-img" src="" style="display:none;">
+                        </div><br>
 
-                    <button type="submit" name="add_product">Add Product</button>
-                </form>
+                        <button type="submit" name="add_product">Add Product</button>
+                    </form>
                 </div>
 
-                <h2>Existing Products</h2>
-                <table class="product-table">
-                <tr>
-                    <th>ID</th>
-                    <th>Image</th>
-                    <th>Shop Name</th>
-                    <th>Category</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Actions</th>
-                </tr>
-                <?php while($row = $products->fetch_assoc()): ?>
-                <tr>
-                    <td><?= $row['productID'] ?></td>
-                    <td><img src="../../images/products/<?= $row['product_image'] ?>" class="shop-img-preview"></td>
-                    <td><?= $row['shopName'] ?></td>
-                    <td><?= $row['shopCategory'] ?></td>
-                    <td><?= $row['productName'] ?></td>
-                    <td><?= number_format($row['productPrice'],2) ?></td>
-                    <td><?= $row['productQuantity'] ?></td>
-                    <td>
-                        <button class="action-btn edit-btn" onclick="openModal(<?= $row['productID'] ?>,'<?= addslashes($row['shopName']) ?>','<?= addslashes($row['shopCategory']) ?>','<?= addslashes($row['productName']) ?>',<?= $row['productPrice'] ?>,<?= $row['productQuantity'] ?>,'<?= $row['product_image'] ?>')">Edit</button>
-                        <a href="?delete_id=<?= $row['productID'] ?>" onclick="return confirm('Delete this product?')" class="action-btn delete-btn">Delete</a>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-                </table>
+                <div class="product-card" style="margin-top:24px;">
+                    <h2>Existing Products</h2>
+                    <table class="product-table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Shop Name</th>
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                        <th>Image</th>
+                    </tr>
+                    <?php while($row = $products->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= $row['productID'] ?></td>
+                        <td><?= $row['shopName'] ?></td>
+                        <td><?= $row['shopCategory'] ?></td>
+                        <td><?= $row['productName'] ?></td>
+                        <td><?= number_format($row['productPrice'],2) ?></td>
+                        <td><img src="../../images/products/<?= $row['product_image'] ?>" class="product-img-preview"></td>
+                        <td>
+                            <button class="action-btn edit-btn" onclick="openModal(<?= $row['productID'] ?>,'<?= addslashes($row['shopName']) ?>','<?= addslashes($row['shopCategory']) ?>','<?= addslashes($row['productName']) ?>',<?= $row['productPrice'] ?>,'<?= $row['product_image'] ?>')">Edit</button>
+                            <a href="?delete_id=<?= $row['productID'] ?>" onclick="return confirm('Delete this product?')" class="action-btn delete-btn">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                    </table>
+                </div>
 
                 <!-- Edit Modal -->
                 <div id="editModal" class="modal">
@@ -254,9 +249,6 @@ if(isset($_POST['edit_product'])){
                             <label>Product Price:</label><br>
                             <input type="number" name="productPrice" id="modalProductPrice" required><br><br>
 
-                            <label>Product Quantity:</label><br>
-                            <input type="number" name="productQuantity" id="modalProductQuantity" required><br><br>
-
                             <label>Product Image:</label><br>
                             <div id="editDropArea" class="drop-area">
                                 Drag & Drop Image or Click
@@ -269,7 +261,6 @@ if(isset($_POST['edit_product'])){
                         </form>
                     </div>
                 </div>
-
             </div>
         </main>
 
@@ -397,16 +388,14 @@ let modalShopName = document.getElementById('modalShopName');
 let modalShopCategory = document.getElementById('modalShopCategory');
 let modalProductName = document.getElementById('modalProductName');
 let modalProductPrice = document.getElementById('modalProductPrice');
-let modalProductQuantity = document.getElementById('modalProductQuantity');
 
-function openModal(id, shopName, shopCategory, productName, price, quantity, image){
+function openModal(id, shopName, shopCategory, productName, price, image){
     modal.style.display='flex';
     modalProductID.value=id;
     modalShopName.value=shopName;
     modalShopCategory.value=shopCategory;
     modalProductName.value=productName;
     modalProductPrice.value=price;
-    modalProductQuantity.value=quantity;
     modalPreview.src="../../images/products/"+image;
 }
 
