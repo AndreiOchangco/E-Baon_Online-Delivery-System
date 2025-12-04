@@ -61,6 +61,13 @@ $username = $_SESSION["username"] ?? "Customer";
             <span class="admin-menu-item-text">Dashboard</span>
         </a>
 
+        <a href="../Body/Customer/Cart.php"
+        class="admin-menu-item"
+        data-tooltip="Cart">
+            <span class="admin-menu-item-icon">🛒</span>
+            <span class="admin-menu-item-text">Cart</span>
+        </a>
+
     </nav>
 
 <!-- LOGOUT BUTTON -->
@@ -89,7 +96,7 @@ $username = $_SESSION["username"] ?? "Customer";
         <!-- Categories -->
         <div class="customer-category-row">
             <button class="category-circle-btn" data-category="all">
-                <img src="../images/customer/placeholder.jpg" class="category-circle-img" alt="All">
+                <img src="../images/customer/All-Categories.png" class="category-circle-img" alt="All">
                 <div class="category-label">All</div>
             </button>
             <?php while($cat = $categories->fetch_assoc()): ?>
