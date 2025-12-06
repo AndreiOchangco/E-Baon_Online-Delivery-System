@@ -29,9 +29,9 @@
 *   **Engagement & Information:** About Us, Contact page, product reviews, comment system.
 
 ### For Administrators (Admin Dashboard):
-*   **Dashboard Overview:** Statistics on orders, users, sales, comments.
+*   **Dashboard Overview:** Statistics on orders, users, sales, and comments.
 *   **User Management:** View and manage users.
-*   **Product Management:** Add, view, edit, delete products.
+*   **Product Management:** Add, view, edit, and delete products.
 *   **Order Management:** View and manage customer orders.
 *   **Comment Management:** Approve, reply to comments.
 *   **Content Management:** Manage blog posts, categories.
@@ -53,7 +53,7 @@
 ### Prerequisites
 
 *   **XAMPP:** Installed and running (Apache, PHP, MySQL).
-*   **Git:** For cloning and commiting changes from local to remote.
+*   **Git:** For cloning and committing changes from local to remote.
 *   **GitHub:** For Remote Repository.
 
 ### Installation & Setup
@@ -89,7 +89,7 @@ You are free to Share and Adapt the material, under the terms of Attribution and
 *   **Team Developers**
     *   **Andrei Luise Ochangco** - Team Leader, Repository Maintainer, Software Engineer, Sub-UI Designer, Sub-Programmer, Dependencies Checker, Database Administrator - [@AndreiOchangco](https://github.com/AndreiOchangco)
     *   **Louis Ricardo Servito** - Main UI Designer - [@Lone-collab](https://github.com/Lone-collab)
-    *   **Ardy Aquino** - Main UI Designer - [@]()
+    *   **Ardy Aquino** - Main UI Designer - [@](https://github.com/ardy05aquino-creator)
     *   **Jonardson Ramat** - Database Manager, Back-end Programmer - [@]()
     *   **Mc Harley Disu** - Assistant
 
