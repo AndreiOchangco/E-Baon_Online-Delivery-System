@@ -128,7 +128,7 @@ E-Baon_Online-Delivery-System/
 5.  **Accessing the Application:**
     *   **Customer Site:** `http://localhost/E-Baon_Online-Delivery-System/` (or `http://localhost/E-Baon_Online-Delivery-System/Main/`)
     *   **Admin Panel:** `http://localhost/E-Baon_Online-Delivery-System/Main/` (or your specific admin path).
-        *   *Default Admin Credentials (if any):* Username: `admin`, Password: `admin` (Please update)
+        *   *Default Admin Credentials (if any):* Username: `e.baon@gmail.com`, Password: `admin` (Please update)
 
 ## 🔐 User Roles & Authentication
 
