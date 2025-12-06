@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2025 at 12:23 PM
+-- Generation Time: Dec 06, 2025 at 04:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -188,7 +188,8 @@ INSERT INTO `orders` (`id`, `customer_id`, `from_address`, `to_address`, `subtot
 (27, 5, 'Iruhin South, City of Tagaytay, Cavite, CALABARZON', 'San Francisco, Rizal, Kalinga, CAR', 1120.00, 9.00, 1129.00, 'completed', '2025-12-06 13:58:26'),
 (28, 2, 'Conconig East, Santa Lucia, Ilocos Sur, Ilocos Region', 'Lingsat, City of San Fernando, La Union, Ilocos Region', 2010.00, 9.00, 2019.00, 'delivering', '2025-12-06 15:11:44'),
 (29, 6, 'Conconig East, Santa Lucia, Ilocos Sur, Ilocos Region', 'Lingsat, City of San Fernando, La Union, Ilocos Region', 260.00, 9.00, 269.00, 'delivering', '2025-12-06 15:26:47'),
-(30, 2, 'Conconig East, Santa Lucia, Ilocos Sur, Ilocos Region', 'Conconig East, Santa Lucia, Ilocos Sur, Ilocos Region', 940.00, 9.00, 949.00, 'preparing', '2025-12-06 19:05:10');
+(30, 2, 'Conconig East, Santa Lucia, Ilocos Sur, Ilocos Region', 'Conconig East, Santa Lucia, Ilocos Sur, Ilocos Region', 940.00, 9.00, 949.00, 'preparing', '2025-12-06 19:05:10'),
+(31, 7, 'Pagdaraoan, City of San Fernando, La Union, Ilocos Region', 'Biday, City of San Fernando, La Union, Ilocos Region', 260.00, 9.00, 269.00, 'completed', '2025-12-06 23:41:39');
 
 -- --------------------------------------------------------
 
@@ -286,7 +287,9 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_name`, `pric
 (74, 30, 9, 'Pineapple Juice', 60.00, 1),
 (75, 30, 10, 'Ice Cream Sandwich Cake', 80.00, 1),
 (76, 30, 11, 'Rice', 50.00, 1),
-(77, 30, 12, 'Coke', 80.00, 1);
+(77, 30, 12, 'Coke', 80.00, 1),
+(78, 31, 4, 'Adobong Manok', 180.00, 1),
+(79, 31, 5, 'Peanut Cake', 80.00, 1);
 
 -- --------------------------------------------------------
 
@@ -311,7 +314,10 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`) VALUES
 (2, 'Brent Alabag', 'brent@gmail.com', 'ardy', 'customer'),
 (3, 'Mark Lester', 'lester@gmail.com', '123', 'delivery'),
 (5, 'brentna', 'brentna@gmail.com', '123', 'customer'),
-(6, 'rosie', 'rosie@gmail.com', '123', 'customer');
+(6, 'rosie', 'rosie@gmail.com', '123', 'customer'),
+(7, 'Andrei Luise E. Ochangco', 'andrei.ochangco@gmail.com', '12345', 'customer'),
+(8, 'Admin', 'e.baon@gmail.com', 'admin', 'admin'),
+(9, 'Delivery Rider #1', 'e.baonRider1@gmail.com', 'password', 'delivery');
 
 --
 -- Indexes for dumped tables
@@ -396,19 +402,19 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

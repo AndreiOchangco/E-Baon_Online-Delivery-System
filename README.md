@@ -126,9 +126,11 @@ E-Baon_Online-Delivery-System/
     *   Default XAMPP credentials: Host: `localhost`, User: `root`, Password: `(empty)`, DB: `e_bregister`.
 
 5.  **Accessing the Application:**
-    *   **Customer Site:** `http://localhost/E-Baon_Online-Delivery-System/` (or `http://localhost/E-Baon_Online-Delivery-System/Main/`)
-    *   **Admin Panel:** `http://localhost/E-Baon_Online-Delivery-System/Main/` (or your specific admin path).
+    *   **Customer Site:** `http://localhost/E-Baon_Online-Delivery-System/Main/`.
+    *   **Admin Panel:** `http://localhost/E-Baon_Online-Delivery-System/Main/`.
         *   *Default Admin Credentials (if any):* Username: `e.baon@gmail.com`, Password: `admin` (Please update)
+    *   **Delivery Dashboard:** `http://localhost/E-Baon_Online-Delivery-System/Main/`.
+        *   *Default Delivery Rider Credentials (if any):* Username: `e.baonRider1@gmail.com`, Password: `password` (Please update)
 
 ## 🔐 User Roles & Authentication
 
