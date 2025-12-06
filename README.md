@@ -235,7 +235,7 @@ You are free to Share and Adapt the material, under the terms of Attribution and
 *   **Team Developers**
     *   **Andrei Luise Ochangco** - Team Leader, Repository Maintainer, Software Engineer, Sub-UI Designer, Sub-Programmer, Dependencies Checker, Database Administrator - [@AndreiOchangco](https://github.com/AndreiOchangco)
     *   **Louis Ricardo Servito** - Front-end Designer - [@Lone-collab](https://github.com/Lone-collab)
-    *   **Ardy Aquino** - Front-end Designer, Back-end Programmer - [@](https://github.com/ardy05aquino-creator)
+    *   **Ardy Aquino** - Front-end Designer, Back-end Programmer - [@ardy05aquino-creator](https://github.com/ardy05aquino-creator)
     *   **Jonardson Ramat** - Assistant
     *   **Mc Harley Disu** - Assistant
 
