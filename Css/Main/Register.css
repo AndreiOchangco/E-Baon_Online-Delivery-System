@@ -1,0 +1,14 @@
+@import url("Index.css");
+
+.auth-title {
+    margin-bottom: 18px;
+}
+
+.auth-success {
+    margin-bottom: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #ecfdf3;
+    color: #15803d;
+    font-size: 13px;
+}
